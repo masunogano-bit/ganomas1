@@ -1,0 +1,539 @@
+.directos-section,
+.directos-section * {
+  box-sizing: border-box;
+}
+
+.directos-section {
+  --directos-night: #03062f;
+  --directos-cyan: #00d2ff;
+  --directos-pink: #f600c9;
+  --directos-green: #45ff68;
+  --directos-gold: #ffd94b;
+  --directos-white: #f4f8ff;
+  position: relative;
+  z-index: 3;
+  isolation: isolate;
+  min-height: 720px;
+  overflow: hidden;
+  color: var(--directos-white);
+  background:
+    radial-gradient(ellipse at 50% 54%, rgba(0, 210, 255, .15), transparent 33%),
+    radial-gradient(circle at 78% 57%, rgba(246, 0, 201, .16), transparent 28%),
+    linear-gradient(180deg, #060739 0%, #03062f 54%, #071646 100%);
+  font-family: "Exo 2", "Trebuchet MS", sans-serif;
+}
+
+.directos-section::before {
+  content: "";
+  position: absolute;
+  z-index: -5;
+  inset: 0;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 96px, rgba(75, 71, 255, .34) 97px 100px),
+    repeating-linear-gradient(0deg, transparent 0 48px, rgba(203, 52, 255, .28) 49px 52px);
+  -webkit-mask-image: linear-gradient(90deg, #000 0 23%, rgba(0,0,0,.2) 43% 59%, #000 82% 100%);
+  mask-image: linear-gradient(90deg, #000 0 23%, rgba(0,0,0,.2) 43% 59%, #000 82% 100%);
+  opacity: .76;
+  filter: blur(.25px);
+}
+
+.directos-section::after {
+  content: "";
+  position: absolute;
+  z-index: -4;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent 1.5%, rgba(118,48,255,.9) 1.7%, transparent 1.9% 49.8%, rgba(0,210,255,.54) 50%, transparent 50.2% 98.1%, rgba(246,0,201,.8) 98.3%, transparent 98.5%),
+    linear-gradient(180deg, transparent 88%, rgba(0,210,255,.5) 88.3%, transparent 88.7%);
+  box-shadow: inset 0 0 100px rgba(2, 3, 35, .86);
+}
+
+.directos-ceiling {
+  position: absolute;
+  z-index: -3;
+  top: -125px;
+  left: -8%;
+  width: 116%;
+  height: 280px;
+  transform: perspective(430px) rotateX(-56deg);
+  transform-origin: center bottom;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 45px, rgba(177, 38, 255, .62) 46px 49px),
+    repeating-linear-gradient(90deg, transparent 0 93px, rgba(83, 69, 255, .54) 94px 97px);
+  filter: drop-shadow(0 0 5px #b720ff);
+  opacity: .58;
+}
+
+.directos-floor {
+  position: absolute;
+  z-index: -3;
+  left: -12%;
+  right: -12%;
+  bottom: -57%;
+  height: 92%;
+  transform: perspective(430px) rotateX(58deg);
+  transform-origin: center top;
+  background:
+    repeating-linear-gradient(0deg, transparent 0 44px, rgba(31, 97, 255, .72) 45px 48px),
+    repeating-linear-gradient(90deg, transparent 0 92px, rgba(161, 47, 255, .72) 93px 96px);
+  filter: drop-shadow(0 0 5px #6638ff);
+  opacity: .74;
+}
+
+.directos-heading {
+  position: relative;
+  z-index: 4;
+  padding-top: 86px;
+  text-align: center;
+}
+
+.directos-kicker {
+  margin: 0 0 5px;
+  color: #ff47d8;
+  font: 800 27px/1.1 "Changa", sans-serif;
+  letter-spacing: .02em;
+  -webkit-text-stroke: 1px #bf149e;
+  text-shadow: 0 0 5px #f600c9, 0 0 18px rgba(246,0,201,.9);
+}
+
+.directos-heading h2 {
+  margin: 0;
+  color: #39e5ff;
+  font: 800 clamp(58px, 6.6vw, 78px)/1 "Changa", sans-serif;
+  letter-spacing: -.04em;
+  -webkit-text-stroke: 2px #0377b4;
+  text-shadow:
+    0 4px 0 #075e9e,
+    0 0 7px #00d2ff,
+    0 0 24px rgba(0,210,255,.9),
+    0 0 48px rgba(0,210,255,.44);
+  transform: scaleX(1.36);
+  transform-origin: center;
+}
+
+.directos-heading > p:last-child {
+  max-width: 700px;
+  margin: 8px auto 0;
+  color: #e1e8f8;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-shadow: 0 2px 5px rgba(2,3,35,.9);
+}
+
+.directos-platforms {
+  position: relative;
+  z-index: 4;
+  width: min(1680px, calc(100% - clamp(74px, 9.4vw, 180px)));
+  margin: 50px auto 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(24px, 2vw, 40px);
+}
+
+.channel-stage {
+  position: relative;
+  min-width: 0;
+  min-height: 365px;
+  overflow: hidden;
+  padding: 74px 42px 38px;
+  border-radius: 26px;
+  transition: transform .32s cubic-bezier(.16,1,.3,1), filter .32s cubic-bezier(.16,1,.3,1);
+}
+
+.channel-stage:hover {
+  transform: translateY(-6px);
+  filter: brightness(1.08);
+}
+
+.facebook-stage {
+  border: 3px solid #42ddff;
+  background:
+    radial-gradient(circle at 28% 44%, rgba(0,210,255,.14), transparent 31%),
+    linear-gradient(145deg, rgba(5,28,76,.97), rgba(3,9,43,.98));
+  box-shadow:
+    0 0 0 5px rgba(5, 68, 155, .78),
+    0 0 0 9px rgba(82, 223, 255, .82),
+    0 0 19px #00d2ff,
+    0 0 48px rgba(0,210,255,.42),
+    inset 0 0 32px rgba(0,210,255,.12);
+}
+
+.facebook-stage::after {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border: 2px solid rgba(142, 239, 255, .72);
+  border-radius: 17px;
+  box-shadow: inset 0 0 15px rgba(0,210,255,.5);
+  pointer-events: none;
+}
+
+.tiktok-stage {
+  border: 2px solid #e73ac0;
+  background:
+    radial-gradient(circle at 76% 25%, rgba(255,51,210,.17), transparent 23%),
+    linear-gradient(145deg, rgba(74,6,43,.97), rgba(26,3,27,.99));
+  box-shadow:
+    0 0 17px rgba(246,0,201,.74),
+    0 0 45px rgba(246,0,201,.27),
+    inset 0 0 34px rgba(246,0,201,.12);
+}
+
+.channel-content {
+  position: relative;
+  z-index: 3;
+  max-width: 78%;
+}
+
+.tiktok-stage .channel-content {
+  max-width: 80%;
+}
+
+.channel-icon {
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  margin-bottom: 23px;
+  border: 3px solid currentColor;
+  border-radius: 16px;
+}
+
+.channel-icon svg {
+  width: 31px;
+  height: 31px;
+  fill: currentColor;
+}
+
+.facebook-stage .channel-icon {
+  color: #55e9ff;
+  box-shadow: 0 0 12px #00d2ff, inset 0 0 10px rgba(0,210,255,.3);
+}
+
+.tiktok-stage .channel-icon {
+  color: #f7f5ff;
+  border-color: #ff50dc;
+  box-shadow: 0 0 12px #f600c9, inset 0 0 12px rgba(246,0,201,.38);
+}
+
+.channel-stage h3 {
+  margin: 0;
+  color: var(--directos-white);
+  font: 800 27px/1.05 "Changa", sans-serif;
+  text-shadow: 0 0 10px rgba(247,251,255,.25);
+}
+
+.channel-stage p {
+  max-width: 560px;
+  margin: 17px 0 23px;
+  color: #d3deef;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.channel-cta {
+  width: max-content;
+  min-width: 184px;
+  min-height: 48px;
+  padding: 10px 23px;
+  border: 1px solid rgba(247,251,255,.5);
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #05123f;
+  font-size: 16px;
+  font-weight: 900;
+  text-decoration: none;
+  transition: transform .26s cubic-bezier(.16,1,.3,1), box-shadow .26s cubic-bezier(.16,1,.3,1);
+}
+
+.facebook-stage .channel-cta {
+  background: #24e4ff;
+  box-shadow: 0 0 12px #00d2ff, 0 0 28px rgba(0,210,255,.72);
+}
+
+.tiktok-stage .channel-cta {
+  color: #30022f;
+  background: #ff16d2;
+  border-color: #ff8bea;
+  box-shadow: 0 0 12px #f600c9, 0 0 28px rgba(246,0,201,.72);
+}
+
+.channel-cta:hover,
+.channel-cta:focus-visible {
+  transform: translateY(-3px) scale(1.025);
+}
+
+.channel-cta:focus-visible {
+  outline: 3px solid var(--directos-gold);
+  outline-offset: 4px;
+}
+
+.facebook-bingo {
+  position: absolute;
+  z-index: 1;
+  top: 32px;
+  right: 3%;
+  width: 48%;
+  padding: 13px;
+  border: 2px solid #2ddfff;
+  border-radius: 8px;
+  color: #44e7ff;
+  background: rgba(5, 22, 69, .74);
+  box-shadow: 0 0 13px rgba(0,210,255,.68);
+  transform: rotate(12deg);
+  opacity: .58;
+}
+
+.facebook-bingo strong {
+  display: block;
+  margin-bottom: 7px;
+  color: #ff54cf;
+  font: 700 31px "Changa", sans-serif;
+  letter-spacing: .19em;
+  text-align: center;
+  text-shadow: 0 0 9px #f600c9;
+}
+
+.facebook-bingo-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+}
+
+.facebook-bingo-grid span {
+  min-height: 41px;
+  border: 1px solid rgba(34,218,255,.5);
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.live-number-orb {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  right: 48px;
+  display: grid;
+  place-items: center;
+  width: 108px;
+  height: 108px;
+  border: 3px solid #62ebff;
+  border-radius: 50%;
+  color: #ff79db;
+  background: radial-gradient(circle, #6b144f, #23042c 72%);
+  box-shadow: 0 0 0 8px rgba(0,210,255,.15), 0 0 14px #00d2ff, 0 0 30px rgba(246,0,201,.72), inset 0 0 18px #f600c9;
+  font: 700 42px "Changa", sans-serif;
+  text-shadow: 0 0 9px #f600c9;
+}
+
+.live-dice {
+  position: absolute;
+  z-index: 5;
+  right: 2.2%;
+  bottom: 31px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.live-die {
+  position: relative;
+  display: block;
+  width: 74px;
+  height: 74px;
+  border: 3px solid currentColor;
+  border-radius: 13px;
+  background:
+    radial-gradient(circle at 27% 27%, currentColor 0 3px, transparent 4px),
+    radial-gradient(circle at 73% 27%, currentColor 0 3px, transparent 4px),
+    radial-gradient(circle at 50% 50%, currentColor 0 3px, transparent 4px),
+    radial-gradient(circle at 27% 73%, currentColor 0 3px, transparent 4px),
+    radial-gradient(circle at 73% 73%, currentColor 0 3px, transparent 4px),
+    rgba(5, 21, 65, .82);
+  box-shadow: 0 0 11px currentColor, inset 0 0 12px rgba(247,251,255,.08);
+}
+
+.live-die:first-child {
+  color: #44e9ff;
+  transform: rotate(18deg);
+}
+
+.live-die:last-child {
+  color: #ff50dc;
+  margin-left: -4px;
+  transform: rotate(-15deg);
+}
+
+.live-corner-ring {
+  position: absolute;
+  z-index: 1;
+  width: 165px;
+  height: 165px;
+  border: 5px solid #54ff76;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #45ff68, inset 0 0 15px #45ff68;
+}
+
+.live-corner-ring.top {
+  top: -102px;
+  left: 28px;
+}
+
+.live-corner-ring.bottom {
+  right: -96px;
+  bottom: -92px;
+  border-color: #ff51d7;
+  box-shadow: 0 0 15px #f600c9, inset 0 0 15px #f600c9;
+}
+
+@media (min-width: 1500px) {
+  .directos-heading {
+    padding-top: 58px;
+  }
+
+  .directos-kicker {
+    font-size: 30px;
+  }
+
+  .directos-heading h2 {
+    font-size: 88px;
+    transform: scaleX(1.16);
+  }
+
+  .directos-heading > p:last-child {
+    max-width: 900px;
+    font-size: 19px;
+  }
+
+  .directos-platforms {
+    margin-top: 50px;
+  }
+
+  .channel-stage {
+    min-height: 365px;
+    padding: 50px 52px 38px;
+  }
+
+  .channel-content {
+    max-width: 62%;
+  }
+
+  .channel-stage h3 {
+    font-size: 31px;
+  }
+
+  .channel-stage p {
+    font-size: 18px;
+  }
+
+  .channel-cta {
+    min-width: 212px;
+    min-height: 52px;
+    font-size: 18px;
+  }
+
+  .facebook-bingo {
+    width: 46%;
+  }
+}
+
+@media (max-width: 900px) {
+  .directos-section {
+    min-height: auto;
+    padding-bottom: 80px;
+  }
+
+  .directos-heading {
+    padding: 66px 20px 0;
+  }
+
+  .directos-kicker {
+    font-size: clamp(19px, 5vw, 25px);
+  }
+
+  .directos-heading h2 {
+    font-size: clamp(45px, 10vw, 68px);
+    transform: none;
+  }
+
+  .directos-heading > p:last-child {
+    max-width: 62ch;
+  }
+
+  .directos-platforms {
+    width: min(620px, calc(100% - 38px));
+    grid-template-columns: 1fr;
+    margin-top: 42px;
+  }
+
+  .channel-stage {
+    min-height: 340px;
+  }
+}
+
+@media (max-width: 560px) {
+  .directos-heading h2 {
+    font-size: clamp(40px, 13vw, 56px);
+  }
+
+  .directos-heading > p:last-child {
+    font-size: 14px;
+  }
+
+  .channel-stage {
+    min-height: 365px;
+    padding: 38px 27px 30px;
+  }
+
+  .channel-content,
+  .tiktok-stage .channel-content {
+    max-width: 100%;
+  }
+
+  .channel-stage h3 {
+    font-size: 25px;
+  }
+
+  .channel-stage p {
+    max-width: 32ch;
+    font-size: 15px;
+  }
+
+  .facebook-bingo {
+    right: -18%;
+    width: 72%;
+    opacity: .23;
+  }
+
+  .live-number-orb {
+    top: 22px;
+    right: 22px;
+    width: 82px;
+    height: 82px;
+    font-size: 32px;
+    opacity: .72;
+  }
+
+  .live-dice {
+    right: -14px;
+    bottom: 8px;
+    opacity: .66;
+  }
+
+  .live-die {
+    width: 58px;
+    height: 58px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .channel-stage,
+  .channel-cta {
+    transition-duration: .01ms;
+  }
+}

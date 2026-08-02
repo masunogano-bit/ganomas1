@@ -1,0 +1,137 @@
+.game-countdown,
+.game-countdown * { box-sizing: border-box; }
+
+.game-countdown {
+  --count-night: #030735;
+  --count-cyan: #35ecff;
+  --count-gold: #ffe20d;
+  --count-fuchsia: #ff43df;
+  position: relative;
+  z-index: 4;
+  min-height: 310px;
+  padding: clamp(34px, 4.4vw, 58px) 18px clamp(40px, 5vw, 64px);
+  overflow: hidden;
+  isolation: isolate;
+  color: #f8fbff;
+  background:
+    radial-gradient(circle at 13% 35%, rgba(246,0,201,.23), transparent 14%),
+    radial-gradient(circle at 84% 35%, rgba(0,210,255,.2), transparent 15%),
+    linear-gradient(180deg, #071247, #030735 76%, #07144d);
+  font-family: "Exo 2", sans-serif;
+}
+
+.game-countdown::before {
+  content: "";
+  position: absolute;
+  z-index: -2;
+  inset: 0;
+  opacity: .54;
+  background:
+    radial-gradient(circle at 7% 30%, #00d2ff 0 7px, transparent 9px),
+    radial-gradient(circle at 17% 70%, #ff42d6 0 6px, transparent 9px),
+    radial-gradient(circle at 76% 67%, #ffd700 0 6px, transparent 9px),
+    radial-gradient(circle at 94% 36%, #ff6a20 0 8px, transparent 11px),
+    linear-gradient(90deg, rgba(0,210,255,.2), transparent 24% 76%, rgba(230,0,92,.18));
+  filter: blur(4px);
+}
+
+.game-countdown::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  opacity: .23;
+  background-image: radial-gradient(#fff 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: linear-gradient(90deg, #000, transparent 30% 70%, #000);
+}
+
+.countdown-console {
+  width: min(720px, 100%);
+  margin-inline: auto;
+  padding: clamp(18px, 2.4vw, 28px) clamp(16px, 3vw, 34px) 18px;
+  border: 2px solid rgba(206,247,255,.85);
+  border-radius: 19px;
+  background: linear-gradient(145deg, rgba(4,8,42,.94), rgba(9,19,62,.87));
+  box-shadow:
+    0 0 0 4px rgba(255,72,210,.16),
+    0 0 24px rgba(255,48,199,.44),
+    0 0 44px rgba(31,229,255,.42),
+    inset 0 0 28px rgba(0,210,255,.12);
+  text-align: center;
+}
+
+.countdown-console h2 {
+  margin: 0 0 16px;
+  font: 800 clamp(1.55rem, 3.3vw, 2.25rem)/1 "Changa", sans-serif;
+  letter-spacing: -.025em;
+  text-shadow: 0 0 7px #fff, 0 0 18px rgba(0,210,255,.75);
+}
+
+.countdown-units {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(8px, 1.5vw, 17px);
+}
+
+.countdown-unit { min-width: 0; }
+
+.countdown-value {
+  display: grid;
+  place-items: center;
+  min-height: clamp(72px, 8vw, 98px);
+  border: 2px solid var(--unit-color);
+  border-radius: 12px;
+  color: #fff22b;
+  background: linear-gradient(180deg, rgba(28,28,92,.97), rgba(8,8,44,.98));
+  box-shadow: 0 0 10px var(--unit-color), 0 0 24px color-mix(in srgb, var(--unit-color) 55%, transparent), inset 0 0 18px rgba(255,255,255,.06);
+  font: 800 clamp(2.2rem, 5.8vw, 4rem)/1 "Changa", sans-serif;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .02em;
+  text-shadow: 0 0 8px rgba(255,226,13,.96), 0 3px 0 rgba(101,61,0,.72);
+}
+
+.countdown-unit:nth-child(1) { --unit-color: #ffe20d; }
+.countdown-unit:nth-child(2) { --unit-color: #ff43df; }
+.countdown-unit:nth-child(3) { --unit-color: #6e72ff; }
+.countdown-unit:nth-child(4) { --unit-color: #35ecff; }
+
+.countdown-label {
+  display: block;
+  margin-top: 7px;
+  color: #52eaff;
+  font-size: clamp(.7rem, 1.5vw, .98rem);
+  font-weight: 900;
+  letter-spacing: .04em;
+  text-shadow: 0 0 9px rgba(35,226,255,.74);
+}
+
+.countdown-date {
+  min-height: 29px;
+  margin: 13px 0 0;
+  color: #ffe3f7;
+  font-size: clamp(.88rem, 2vw, 1.16rem);
+  font-style: italic;
+  font-weight: 600;
+  text-shadow: 0 0 12px rgba(255,65,205,.58);
+}
+
+.countdown-console[data-state="loading"] .countdown-value { opacity: .62; }
+.countdown-console[data-state="live"] { animation: countdown-live 1.15s ease-in-out infinite alternate; }
+.countdown-console[data-state="error"] .countdown-date { color: #ffd76a; }
+
+@keyframes countdown-live {
+  to { box-shadow: 0 0 0 4px rgba(255,226,13,.22), 0 0 34px rgba(255,73,210,.7), 0 0 62px rgba(53,236,255,.55), inset 0 0 30px rgba(255,226,13,.14); }
+}
+
+@media (max-width: 620px) {
+  .game-countdown { min-height: 0; padding-inline: 10px; }
+  .countdown-console { padding-inline: 11px; border-radius: 15px; }
+  .countdown-units { gap: 6px; }
+  .countdown-value { min-height: 65px; border-radius: 9px; font-size: clamp(1.7rem, 10vw, 2.65rem); }
+  .countdown-label { font-size: clamp(.58rem, 2.7vw, .75rem); letter-spacing: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .countdown-console[data-state="live"] { animation: none; }
+}

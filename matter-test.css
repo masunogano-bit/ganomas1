@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css2?family=Changa:wght@600;700;800&family=Exo+2:wght@400;600;700;800&display=swap");
+
+* { box-sizing: border-box; }
+body { margin: 0; color: #f9fbff; background: radial-gradient(circle at 50% 10%,#142569,#05072b 55%,#020318); font-family: "Exo 2",sans-serif; }
+button { font: inherit; }
+.lab-page { min-height: 100svh; display: grid; place-items: center; padding: 28px; }
+.lab-card { width: min(920px,100%); padding: clamp(20px,4vw,38px); border: 1px solid rgba(43,220,255,.34); border-radius: 28px; background: linear-gradient(145deg,rgba(14,30,82,.94),rgba(5,10,43,.96)); box-shadow: 0 32px 100px rgba(0,0,20,.5); }
+.lab-card header { text-align: center; }
+.lab-kicker { color: #63eaff; font-size: .73rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+h1 { margin: 8px 0 4px; font: 800 clamp(2.2rem,6vw,4.6rem)/1 "Changa"; letter-spacing: -.04em; }
+h1 em { color: transparent; background: linear-gradient(90deg,#ffd500,#ff6a00,#ff0095); background-clip: text; -webkit-background-clip: text; font-style: normal; }
+header p { margin: 0 0 24px; color: #aebbe0; }
+.canvas-shell { position: relative; overflow: hidden; border: 1px solid rgba(75,222,255,.34); border-radius: 20px; background: #07113c; }
+canvas { display: block; width: 100%; height: auto; aspect-ratio: 760/520; }
+.live-chip { position: absolute; top: 14px; right: 14px; padding: 8px 11px; border: 1px solid rgba(0,230,118,.34); border-radius: 999px; color: #a8ffd2; background: rgba(0,230,118,.1); font-size: .72rem; font-weight: 900; }
+.lab-card > button { display: flex; align-items: center; justify-content: center; gap: 12px; width: min(100%,380px); margin: 20px auto 0; padding: 14px 20px; border: 1px solid #fff0a0; border-radius: 13px; color: #25113a; background: linear-gradient(180deg,#ffdd67,#ff7d1a 63%,#f14d1a); box-shadow: 0 0 30px rgba(255,104,22,.48); font: 900 1rem "Changa"; cursor: pointer; }
+.lab-card > button span { font-size: 1.3rem; }
+@media (max-width: 520px) { .lab-page { padding: 10px; } .lab-card { padding: 15px; border-radius: 20px; } .live-chip { top: 8px; right: 8px; } }

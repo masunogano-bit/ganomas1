@@ -1,0 +1,9 @@
+node_modules/
+dist/
+public/
+dist-matter-test/
+.env
+.env.local
+.vercel/
+*.log
+

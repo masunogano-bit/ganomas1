@@ -1,0 +1,6 @@
+node_modules
+dist
+dist-matter-test
+.env
+.env.local
+*.log

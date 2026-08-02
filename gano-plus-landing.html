@@ -1,0 +1,2695 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GANO+1: vive el reto del cartón electrónico y sigue cada partida en directo por Facebook y TikTok.">
+  <meta name="theme-color" content="#05052a">
+  <title>GANO+1 | Tu cartón cobra vida</title>
+  <link rel="stylesheet" href="./ganadores-replica/style.css?v=5">
+  <link rel="stylesheet" href="./directos-section.css?v=5">
+  <link rel="stylesheet" href="./countdown.css?v=1">
+  <link rel="stylesheet" href="./closing-section.css?v=8">
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Changa:wght@500;600;700;800&family=Exo+2:wght@400;500;600;700;800;900&display=swap");
+
+    :root {
+      --night: #05052a;
+      --night-2: #080944;
+      --panel: rgba(8, 14, 62, .82);
+      --cyan: #21e6ff;
+      --blue: #1677ff;
+      --pink: #ff38a8;
+      --orange: #ff6b16;
+      --gold: #ffe15b;
+      --lime: #4cff9b;
+      --white: #f8fbff;
+      --muted: #b7c4e8;
+      --line: rgba(60, 225, 255, .35);
+      --shadow: 0 28px 80px rgba(0, 0, 24, .52);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: clip; }
+    body {
+      margin: 0;
+      min-width: 280px;
+      color: var(--white);
+      background: var(--night);
+      font-family: "Exo 2", "Trebuchet MS", sans-serif;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      z-index: -2;
+      inset: 0;
+      background:
+        radial-gradient(circle at 12% 10%, rgba(22, 119, 255, .34), transparent 34rem),
+        radial-gradient(circle at 92% 26%, rgba(255, 56, 168, .22), transparent 28rem),
+        linear-gradient(180deg, #07083c, #05052a 56%, #030321);
+    }
+    button, a { font: inherit; }
+    button { color: inherit; }
+    a { color: inherit; text-decoration: none; }
+    :focus-visible { outline: 3px solid var(--gold); outline-offset: 4px; }
+    .container { width: min(1180px, calc(100% - 32px)); margin-inline: auto; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    #matter-background {
+      position: fixed;
+      z-index: 0;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      opacity: .84;
+      pointer-events: none;
+      filter: saturate(150%) contrast(108%);
+      mix-blend-mode: screen;
+    }
+    main, footer { position: relative; z-index: 1; }
+
+    .site-header {
+      position: sticky;
+      z-index: 50;
+      top: 0;
+      border-bottom: 1px solid rgba(73, 226, 255, .25);
+      background: rgba(4, 5, 38, .82);
+      box-shadow: 0 12px 45px rgba(0, 0, 24, .34);
+      backdrop-filter: blur(20px) saturate(145%);
+    }
+    .nav { min-height: 74px; display: flex; align-items: center; gap: 20px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; flex: 0 0 auto; }
+    .brand-domain { font: 800 clamp(1.05rem, 2vw, 1.42rem) "Changa"; letter-spacing: -.04em; }
+    .brand-logo {
+      display: grid;
+      place-items: center;
+      height: 42px;
+      min-width: 104px;
+      padding: 0 13px;
+      border: 2px solid #a9f6ff;
+      border-radius: 14px;
+      color: #fff;
+      background: linear-gradient(145deg, #ffd94f 0 14%, #ff8b16 34%, #ff3e58 72%, #8b2dff);
+      box-shadow: 0 0 24px rgba(33, 230, 255, .5), inset 0 -8px 12px rgba(66, 0, 88, .28);
+      font: 800 1.3rem "Changa";
+      text-shadow: 0 2px 2px rgba(28, 0, 48, .65);
+    }
+    .nav-links { display: flex; align-items: center; gap: 7px; margin-left: auto; }
+    .nav-link {
+      padding: 9px 13px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      color: #e7eeff;
+      font-size: .88rem;
+      font-weight: 800;
+      transition: .2s ease;
+    }
+    .nav-link:hover, .nav-link[aria-current="page"] {
+      border-color: rgba(99, 235, 255, .58);
+      background: linear-gradient(135deg, rgba(26, 174, 255, .36), rgba(79, 56, 216, .46));
+      box-shadow: 0 0 20px rgba(33, 230, 255, .24);
+      transform: translateY(-2px);
+    }
+    .socials { display: flex; gap: 8px; }
+    .social {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border: 1px solid rgba(255, 255, 255, .2);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .07);
+      transition: .2s ease;
+    }
+    .social:hover { color: var(--cyan); border-color: var(--cyan); transform: translateY(-3px) scale(1.06); box-shadow: 0 0 20px rgba(33,230,255,.28); }
+    .social svg { width: 18px; height: 18px; fill: currentColor; }
+    .menu-button { display: none; margin-left: auto; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 13px; background: rgba(18, 38, 103, .9); cursor: pointer; }
+
+    .hero {
+      position: relative;
+      min-height: calc(100svh - 74px);
+      padding: 70px 0 88px;
+      display: grid;
+      align-items: center;
+      isolation: isolate;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(4, 5, 39, .76), rgba(4, 5, 39, .32) 58%, rgba(4, 5, 39, .48)),
+        linear-gradient(180deg, transparent 68%, var(--night));
+    }
+    .hero-grid { display: grid; grid-template-columns: minmax(0, .88fr) minmax(0, 1.12fr); gap: clamp(28px, 5vw, 70px); align-items: center; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #dffbff;
+      font-size: .76rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .live-dot { width: 9px; height: 9px; border-radius: 50%; background: #ff395d; box-shadow: 0 0 0 6px rgba(255,57,93,.15), 0 0 18px #ff395d; animation: pulse 1.35s ease-in-out infinite; }
+    @keyframes pulse { 50% { box-shadow: 0 0 0 11px rgba(255,57,93,0), 0 0 24px #ff395d; } }
+    .hero h1 {
+      max-width: 620px;
+      margin: 15px 0 17px;
+      font: 800 clamp(2.65rem, 6.4vw, 5.7rem)/.89 "Changa";
+      letter-spacing: -.052em;
+      text-wrap: balance;
+      text-shadow: 0 8px 35px rgba(0, 0, 20, .72);
+    }
+    .gradient-text {
+      color: transparent;
+      background: linear-gradient(92deg, #fff16b 3%, #ff9a18 32%, #ff3b9c 65%, #49eaff 96%);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+    .hero-copy > p { max-width: 560px; margin: 0; color: #d6dff8; font-size: clamp(1rem, 1.8vw, 1.17rem); line-height: 1.58; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 27px; }
+    .cta-primary, .cta-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 54px;
+      padding: 0 21px;
+      border-radius: 15px;
+      font: 900 .98rem "Changa";
+      transition: .22s ease;
+    }
+    .cta-primary {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #fff2a2;
+      color: #28113d;
+      background: linear-gradient(180deg, #ffe365, #ff8c17 55%, #ff501b);
+      box-shadow: 0 0 0 5px rgba(255, 121, 21, .1), 0 0 36px rgba(255, 95, 28, .6), inset 0 2px rgba(255,255,255,.5);
+    }
+    .cta-primary::after { content: ""; position: absolute; inset: -50% auto -50% -30%; width: 22%; transform: rotate(18deg); background: rgba(255,255,255,.4); transition: .46s ease; }
+    .cta-primary:hover { transform: translateY(-3px) scale(1.015); box-shadow: 0 0 0 7px rgba(255,121,21,.09), 0 0 48px rgba(255,95,28,.78); }
+    .cta-primary:hover::after { left: 115%; }
+    .cta-secondary { border: 1px solid var(--cyan); color: #e6fcff; background: rgba(13, 116, 213, .24); }
+    .cta-secondary:hover { transform: translateY(-3px); background: rgba(17,137,238,.4); box-shadow: 0 0 28px rgba(33,230,255,.3); }
+    .micro-trust { display: flex; flex-wrap: wrap; gap: 12px 20px; margin: 20px 0 0; padding: 0; list-style: none; color: #b9c7e9; font-size: .8rem; font-weight: 700; }
+    .micro-trust li::before { content: "✦"; margin-right: 7px; color: var(--lime); }
+
+    .video-card {
+      position: relative;
+      padding: 10px;
+      border: 1px solid rgba(83, 229, 255, .52);
+      border-radius: 28px;
+      background: linear-gradient(145deg, rgba(16, 31, 94, .86), rgba(5, 8, 48, .86));
+      box-shadow: var(--shadow), 0 0 44px rgba(31, 207, 255, .14), inset 0 0 0 1px rgba(255,255,255,.05);
+      backdrop-filter: blur(14px);
+    }
+    .video-card::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: -18px;
+      border-radius: 38px;
+      background: conic-gradient(from 90deg, transparent, rgba(33,230,255,.42), transparent 30%, rgba(255,56,168,.4), transparent 65%, rgba(255,157,32,.4), transparent);
+      filter: blur(22px);
+      opacity: .55;
+      animation: aura 9s linear infinite;
+    }
+    @keyframes aura { to { transform: rotate(360deg); } }
+    .video-shell {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 1px solid rgba(100, 230, 255, .35);
+      border-radius: 20px;
+      background:
+        linear-gradient(rgba(5,9,54,.2), rgba(4,5,37,.62)),
+        radial-gradient(circle at 52% 45%, rgba(41,219,255,.3), transparent 25%),
+        repeating-linear-gradient(120deg, transparent 0 32px, rgba(62,224,255,.035) 32px 34px),
+        linear-gradient(145deg, #13247c, #070931 76%);
+    }
+    .video-shell::after { content: ""; position: absolute; inset: 0; box-shadow: inset 0 0 90px rgba(0,0,28,.75); pointer-events: none; }
+    .video-badge { position: absolute; z-index: 2; top: 16px; left: 16px; padding: 7px 10px; border-radius: 9px; color: #fff; background: rgba(255,42,80,.9); box-shadow: 0 0 18px rgba(255,42,80,.55); font-size: .7rem; font-weight: 900; letter-spacing: .11em; }
+    .video-placeholder { position: relative; z-index: 1; max-width: 400px; padding: 28px; text-align: center; }
+    .play-button {
+      display: grid;
+      place-items: center;
+      width: 82px;
+      height: 82px;
+      margin: 0 auto 17px;
+      border: 2px solid #d4fbff;
+      border-radius: 50%;
+      color: #07103e;
+      background: linear-gradient(145deg, #8df6ff, #19b9ff);
+      box-shadow: 0 0 0 12px rgba(36, 225, 255, .1), 0 0 38px rgba(36,225,255,.72);
+      cursor: pointer;
+      transition: .24s ease;
+    }
+    .play-button:hover { transform: scale(1.08); box-shadow: 0 0 0 16px rgba(36,225,255,.08), 0 0 52px rgba(36,225,255,.9); }
+    .play-button svg { width: 31px; height: 31px; fill: currentColor; transform: translateX(2px); }
+    .video-placeholder strong { display: block; font: 800 clamp(1.08rem, 2.2vw, 1.42rem) "Changa"; }
+    .video-placeholder span { display: block; margin-top: 4px; color: var(--muted); font-size: .86rem; }
+    .platform-chips { position: absolute; z-index: 3; right: 15px; bottom: 15px; display: flex; gap: 7px; }
+    .platform-chip { padding: 7px 10px; border: 1px solid rgba(255,255,255,.18); border-radius: 999px; background: rgba(4,7,39,.82); font-size: .7rem; font-weight: 900; backdrop-filter: blur(10px); }
+    .platform-chip:first-child { color: #70a7ff; }
+    .platform-chip:last-child { color: #ff6878; }
+
+    .star-product {
+      position: relative;
+      padding: 86px 0 92px;
+      background: linear-gradient(180deg, rgba(5,5,42,.82), rgba(8,9,68,.76) 52%, rgba(5,5,42,.84));
+      isolation: isolate;
+    }
+    .star-product::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 8% 0;
+      background: radial-gradient(ellipse at center, rgba(255, 49, 168, .14), transparent 56%);
+    }
+    .section-heading { max-width: 800px; margin: 0 auto 38px; text-align: center; }
+    .section-heading h2 { margin: 10px 0 11px; font: 800 clamp(2.1rem, 5vw, 4rem)/.98 "Changa"; letter-spacing: -.035em; text-wrap: balance; }
+    .section-heading p { max-width: 650px; margin: 0 auto; color: var(--muted); font-size: 1.02rem; line-height: 1.55; }
+
+    .electronic-console {
+      position: relative;
+      padding: clamp(16px, 2.7vw, 30px);
+      border: 1px solid rgba(81, 227, 255, .55);
+      border-radius: 32px;
+      background:
+        linear-gradient(135deg, rgba(26,52,130,.42), transparent 30%),
+        linear-gradient(145deg, rgba(10,19,82,.96), rgba(4,7,42,.96));
+      box-shadow: var(--shadow), 0 0 70px rgba(40, 218, 255, .15), inset 0 0 0 2px rgba(255,255,255,.025);
+      overflow: hidden;
+    }
+    .electronic-console::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(0deg, transparent 0 5px, rgba(130,238,255,.018) 5px 6px);
+    }
+    .console-top {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+      padding-bottom: 17px;
+      border-bottom: 1px solid rgba(81, 227, 255, .2);
+    }
+    .console-title { min-width: 0; }
+    .console-title span { display: block; color: #84f1ff; font-size: .69rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+    .console-title h3 { margin: 2px 0 0; font: 800 clamp(1.3rem, 3vw, 2rem) "Changa"; }
+    .signal { display: flex; align-items: center; gap: 8px; flex: 0 0 auto; color: #b8ffd7; font-size: .75rem; font-weight: 900; }
+    .signal i { width: 9px; height: 9px; border-radius: 50%; background: var(--lime); box-shadow: 0 0 14px var(--lime); animation: pulse-green 1.5s infinite; }
+    @keyframes pulse-green { 50% { opacity: .45; transform: scale(.72); } }
+    .console-grid { position: relative; display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(260px, .55fr); gap: clamp(18px, 3vw, 32px); align-items: stretch; }
+
+    .board-stage {
+      min-width: 0;
+      padding: clamp(12px, 2vw, 23px);
+      border: 1px solid rgba(73, 227, 255, .3);
+      border-radius: 25px;
+      background:
+        radial-gradient(circle at 50% 40%, rgba(24,127,255,.2), transparent 54%),
+        linear-gradient(145deg, rgba(8,17,74,.9), rgba(6,8,46,.94));
+      box-shadow: inset 0 0 45px rgba(16, 145, 255, .1);
+    }
+    .called-strip { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 7px; margin-bottom: 14px; }
+    .called-number {
+      min-width: 0;
+      padding: 8px 4px;
+      overflow: hidden;
+      border: 1px solid rgba(87, 231, 255, .24);
+      border-radius: 10px;
+      color: #c9f9ff;
+      background: rgba(25, 98, 189, .18);
+      text-align: center;
+      font-size: clamp(.66rem, 2vw, .82rem);
+      font-weight: 900;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .called-number.hot { color: #25103c; border-color: #fff09a; background: linear-gradient(180deg, #ffe55d, #ff861b); box-shadow: 0 0 17px rgba(255,124,25,.58); }
+    .board-housing {
+      width: min(100%, 590px);
+      margin-inline: auto;
+      padding: clamp(10px, 2vw, 18px);
+      border: 2px solid #51e7ff;
+      border-radius: 24px;
+      background: linear-gradient(150deg, #142d89, #081044 70%);
+      box-shadow:
+        0 0 0 5px rgba(35, 218, 255, .07),
+        0 0 42px rgba(33, 230, 255, .3),
+        inset 0 0 30px rgba(34, 208, 255, .14);
+    }
+    .bingo-letters, .bingo-board { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(5px, 1.1vw, 10px); }
+    .bingo-letters { margin-bottom: 8px; }
+    .bingo-letters span { min-width: 0; color: #7cf2ff; text-align: center; font: 800 clamp(.92rem, 3vw, 1.35rem) "Changa"; text-shadow: 0 0 16px rgba(33,230,255,.72); }
+    .bingo-cell {
+      position: relative;
+      min-width: 0;
+      aspect-ratio: 1;
+      padding: 0;
+      border: 1px solid rgba(103, 235, 255, .62);
+      border-radius: clamp(8px, 1.5vw, 15px);
+      overflow: hidden;
+      color: #fff;
+      background:
+        radial-gradient(circle at 34% 26%, rgba(110,203,255,.34), transparent 31%),
+        linear-gradient(145deg, #2855b1, #122765 72%);
+      box-shadow: inset 0 0 15px rgba(33,230,255,.16), 0 5px 12px rgba(0,0,30,.28);
+      font: 900 clamp(.7rem, 2.4vw, 1.12rem) "Changa";
+      cursor: pointer;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+    }
+    .bingo-cell::before { content: ""; position: absolute; inset: 1px; border-radius: inherit; border-top: 1px solid rgba(255,255,255,.28); pointer-events: none; }
+    .bingo-cell:hover { z-index: 2; transform: translateY(-3px) scale(1.04); border-color: #fff3a2; box-shadow: 0 0 20px rgba(255,147,30,.7); }
+    .bingo-cell.marked {
+      color: #2b1037;
+      border-color: #fff8c8;
+      background:
+        radial-gradient(circle at 34% 25%, #fffbc7 0 12%, #ffe45d 24%, transparent 25%),
+        linear-gradient(145deg, #ffdc48, #ff741a 65%, #f52e77);
+      box-shadow: 0 0 9px #fff7ac, 0 0 28px rgba(255,89,39,.95), inset 0 -9px 15px rgba(173,17,79,.25);
+      transform: scale(1.045);
+    }
+    .board-caption { margin: 12px 0 0; color: #9eb1dc; text-align: center; font-size: .75rem; }
+
+    .control-panel {
+      min-width: 0;
+      padding: clamp(16px, 2vw, 22px);
+      border: 1px solid rgba(255, 71, 173, .35);
+      border-radius: 24px;
+      background: linear-gradient(160deg, rgba(54,20,112,.58), rgba(7,12,56,.92) 54%);
+      box-shadow: inset 0 0 35px rgba(255,56,168,.08);
+    }
+    .control-label { color: #ff97d3; font-size: .69rem; font-weight: 900; letter-spacing: .13em; text-transform: uppercase; }
+    .control-panel h4 { margin: 6px 0 7px; font: 800 clamp(1.25rem, 3vw, 1.72rem)/1.06 "Changa"; }
+    .control-panel > p { margin: 0; color: var(--muted); font-size: .87rem; line-height: 1.48; }
+    .progress-card { margin: 19px 0; padding: 15px; border: 1px solid rgba(74,226,255,.2); border-radius: 16px; background: rgba(7,30,91,.54); }
+    .progress-top { display: flex; justify-content: space-between; gap: 10px; color: #d9faff; font-size: .77rem; font-weight: 800; }
+    .progress-top strong { color: var(--gold); }
+    .progress-track { height: 10px; margin-top: 10px; overflow: hidden; border-radius: 999px; background: rgba(255,255,255,.08); box-shadow: inset 0 2px 6px rgba(0,0,0,.34); }
+    .progress-fill { width: 20%; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--cyan), #8560ff, var(--pink), var(--orange)); box-shadow: 0 0 15px rgba(255,67,164,.66); transition: width .35s cubic-bezier(.2,.8,.2,1); }
+    .feature-list { display: grid; gap: 10px; margin: 0 0 19px; padding: 0; list-style: none; }
+    .feature-list li { display: grid; grid-template-columns: 34px minmax(0,1fr); gap: 10px; align-items: center; min-width: 0; color: #dce5ff; font-size: .83rem; }
+    .feature-list i { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 10px; color: #06113c; background: linear-gradient(145deg, #74f5ff, #19a3ff); font-style: normal; font-weight: 900; box-shadow: 0 0 14px rgba(33,230,255,.3); }
+    .control-panel .cta-primary { width: 100%; }
+
+    .winner-section {
+      position: relative;
+      z-index: 2;
+      padding: 96px 0;
+      overflow: hidden;
+      color: #2b0005;
+      background:
+        radial-gradient(circle at 18% 14%, #fffbd6 0 2%, transparent 17%),
+        radial-gradient(circle at 82% 78%, rgba(255, 85, 0, .38), transparent 24rem),
+        repeating-conic-gradient(from -12deg at 50% 50%, rgba(255,255,255,.12) 0 8deg, transparent 8deg 18deg),
+        linear-gradient(135deg, #fff39a 0%, #ffc21c 34%, #ff7a00 73%, #e82419 100%);
+      box-shadow: inset 0 16px 45px rgba(105,0,8,.22), inset 0 -16px 45px rgba(105,0,8,.28);
+    }
+    .winner-section::before,
+    .winner-section::after {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      width: 330px;
+      height: 330px;
+      border: 42px solid rgba(255, 244, 161, .38);
+      border-radius: 50%;
+      box-shadow: 0 0 0 22px rgba(160,0,20,.12), 0 0 60px rgba(129,0,7,.22);
+    }
+    .winner-section::before { left: -170px; top: -180px; }
+    .winner-section::after { right: -180px; bottom: -190px; }
+    .winner-layout { display: grid; grid-template-columns: minmax(0,.88fr) minmax(0,1.12fr); gap: clamp(26px,5vw,66px); align-items: center; }
+    .winner-copy .eyebrow { color: #6e000d; }
+    .winner-copy h2 { margin: 12px 0 13px; font: 800 clamp(2.4rem,5vw,4.5rem)/.92 "Changa"; letter-spacing: -.045em; text-wrap: balance; }
+    .winner-copy h2 span { color: #8e0016; text-shadow: 0 2px 0 rgba(255,255,255,.42); }
+    .winner-copy > p { max-width: 550px; margin: 0; color: #5d120b; font-size: 1.02rem; font-weight: 650; line-height: 1.58; }
+    .winner-flow { display: grid; gap: 9px; margin: 22px 0 25px; padding: 0; list-style: none; counter-reset: winning-steps; }
+    .winner-flow li {
+      counter-increment: winning-steps;
+      display: grid;
+      grid-template-columns: 38px minmax(0,1fr);
+      gap: 11px;
+      align-items: center;
+      padding: 10px 12px;
+      border: 1px solid rgba(102,0,11,.2);
+      border-radius: 13px;
+      background: rgba(255, 251, 218, .38);
+      box-shadow: inset 0 1px rgba(255,255,255,.55);
+      font-size: .85rem;
+      font-weight: 850;
+    }
+    .winner-flow li::before {
+      content: counter(winning-steps);
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 2px solid #fff2a4;
+      border-radius: 50%;
+      color: #fff9d6;
+      background: linear-gradient(145deg,#dc0929,#71000e);
+      box-shadow: 0 4px 10px rgba(91,0,8,.32), inset 0 2px rgba(255,255,255,.24);
+      font: 900 .92rem "Changa";
+    }
+    .winner-copy .cta-primary { max-width: 330px; color: #fff7d7; background: linear-gradient(180deg,#cf1129,#8e0015 58%,#4d0009); border-color: #fff0a2; }
+    .winner-visual {
+      position: relative;
+      min-height: 520px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      border: 3px solid #fff3a4;
+      border-radius: 34px;
+      background:
+        repeating-conic-gradient(from 0deg at 50% 48%, rgba(255,226,98,.16) 0 7deg, transparent 7deg 18deg),
+        radial-gradient(circle at 50% 48%, rgba(255,190,0,.42), transparent 26%),
+        linear-gradient(145deg,#b40b24,#65000f 58%,#250006);
+      box-shadow:
+        0 0 0 8px rgba(120,0,11,.14),
+        0 22px 55px rgba(83,0,6,.42),
+        0 0 30px rgba(255,248,183,.82),
+        inset 0 0 80px rgba(255,174,0,.18);
+      isolation: isolate;
+    }
+    .winner-visual::before {
+      content: "";
+      position: absolute;
+      z-index: -1;
+      inset: 18px;
+      border: 1px solid rgba(255,236,145,.4);
+      border-radius: 25px;
+    }
+    .winner-coin {
+      position: absolute;
+      width: var(--coin-size);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      border: max(3px, calc(var(--coin-size) * .08)) solid #fff39a;
+      border-radius: 50%;
+      color: #8b1900;
+      background: radial-gradient(circle at 32% 25%,#fffde3 0 8%,#ffe765 19%,#ffb000 52%,#e85600 78%,#9f2100);
+      box-shadow: 0 0 12px #ffe36d, 0 0 28px rgba(255,106,0,.72), inset 0 0 0 5px rgba(134,28,0,.32);
+      font: 900 calc(var(--coin-size) * .35) "Changa";
+      animation: coin-orbit 5s ease-in-out infinite;
+    }
+    .winner-coin.one { --coin-size: 76px; left: 7%; top: 10%; transform: rotate(-16deg); }
+    .winner-coin.two { --coin-size: 56px; right: 9%; top: 16%; animation-delay: -1.4s; }
+    .winner-coin.three { --coin-size: 66px; right: 6%; bottom: 8%; animation-delay: -2.6s; }
+    .winner-coin.four { --coin-size: 48px; left: 11%; bottom: 15%; animation-delay: -3.7s; }
+    @keyframes coin-orbit { 50% { translate: 0 -14px; rotate: 16deg; filter: brightness(1.2); } }
+    .winner-podium { position: relative; z-index: 2; width: min(80%, 410px); text-align: center; }
+    .trophy-seal {
+      width: 132px;
+      height: 132px;
+      display: grid;
+      place-items: center;
+      margin: 0 auto 18px;
+      border: 5px solid #fff7ba;
+      border-radius: 50%;
+      color: #7b000f;
+      background: radial-gradient(circle at 35% 27%,#fffef0 0 8%,#ffe768 25%,#ffae00 58%,#ed4b00);
+      box-shadow: 0 0 0 11px rgba(255,196,0,.14), 0 0 24px #ffe674, 0 0 56px rgba(255,113,0,.8);
+    }
+    .trophy-seal svg { width: 68px; height: 68px; fill: currentColor; filter: drop-shadow(0 3px 0 rgba(255,255,255,.25)); }
+    .winner-podium small { display: block; color: #ffe78b; font-size: .69rem; font-weight: 900; letter-spacing: .16em; text-transform: uppercase; }
+    .winner-podium h3 { margin: 6px 0 4px; color: #fff; font: 800 clamp(1.9rem,4vw,3rem)/1 "Changa"; text-shadow: 0 3px 0 #5a000c,0 0 22px rgba(255,190,0,.5); }
+    .winner-podium strong { display: block; color: #ffd849; font-size: clamp(1.05rem,2vw,1.35rem); }
+    .winner-podium p { max-width: 330px; margin: 13px auto 0; color: #f5d9d0; font-size: .8rem; line-height: 1.45; }
+    .verification-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 18px;
+      padding: 8px 11px;
+      border: 1px solid rgba(255,231,135,.45);
+      border-radius: 999px;
+      color: #fff2b5;
+      background: rgba(40,0,6,.54);
+      font-size: .68rem;
+      font-weight: 900;
+    }
+    .verification-badge i { width: 8px; height: 8px; border-radius: 50%; background: #ffe053; box-shadow: 0 0 10px #ffb000; }
+    .winner-visual {
+      grid-template-columns: minmax(0, .82fr) minmax(255px, 1.18fr);
+      gap: clamp(16px, 2.5vw, 26px);
+      padding: clamp(20px, 3vw, 32px);
+    }
+    .winner-podium { width: 100%; }
+    .recent-winners-panel {
+      position: relative;
+      z-index: 3;
+      width: 100%;
+      min-width: 0;
+      padding: 18px;
+      border: 1px solid rgba(235, 205, 104, .4);
+      border-radius: 22px;
+      background: linear-gradient(155deg, rgba(18,31,53,.95), rgba(5,10,19,.97));
+      box-shadow: 0 18px 36px rgba(0,0,0,.34), inset 0 0 26px rgba(65,126,184,.08);
+      text-align: left;
+    }
+    .recent-winners-title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding-bottom: 11px;
+      border-bottom: 1px solid rgba(236,201,94,.18);
+    }
+    .recent-winners-title h4 { margin: 0; color: #fff; font: 800 1rem "Changa"; }
+    .recent-winners-title h4 span { color: #e6be45; }
+    .recent-winners-title i { width: 8px; height: 8px; flex: 0 0 auto; border-radius: 50%; background: #3ce58b; box-shadow: 0 0 12px #32d97f; }
+    .recent-winners-list { display: grid; gap: 7px; margin: 0; padding: 0; list-style: none; }
+    .recent-winner {
+      display: grid;
+      grid-template-columns: 28px 38px minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+      min-width: 0;
+      padding: 8px 9px;
+      border: 1px solid rgba(108,166,225,.12);
+      border-radius: 12px;
+      background: linear-gradient(90deg, rgba(31,73,127,.74), rgba(13,32,61,.78));
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .recent-winner:hover { transform: translateX(-3px); border-color: rgba(233,196,79,.36); }
+    .winner-rank {
+      display: grid;
+      place-items: center;
+      width: 28px;
+      height: 28px;
+      color: #dce8ff;
+      font-size: .75rem;
+      font-style: normal;
+      font-weight: 900;
+    }
+    .winner-rank.crown { font-size: 1.25rem; filter: drop-shadow(0 0 6px currentColor); }
+    .winner-rank.gold { color: #ffd74d; }
+    .winner-rank.silver { color: #d9e5f2; }
+    .winner-rank.bronze { color: #e68c50; }
+    .winner-avatar {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border: 2px solid rgba(255,235,156,.75);
+      border-radius: 50%;
+      color: #fff;
+      background: linear-gradient(145deg,#4f86ca,#203c70);
+      box-shadow: 0 0 12px rgba(65,138,210,.28);
+      font-size: .68rem;
+      font-weight: 900;
+    }
+    .recent-winner:nth-child(2) .winner-avatar { background: linear-gradient(145deg,#d05c7b,#692541); }
+    .recent-winner:nth-child(3) .winner-avatar { background: linear-gradient(145deg,#9d68d9,#4d2b79); }
+    .recent-winner:nth-child(4) .winner-avatar { background: linear-gradient(145deg,#27ae87,#135e4c); }
+    .recent-winner:nth-child(5) .winner-avatar { background: linear-gradient(145deg,#e69b38,#8b421e); }
+    .winner-person { min-width: 0; overflow: hidden; color: #f4f7ff; font-size: .82rem; font-weight: 800; white-space: nowrap; text-overflow: ellipsis; }
+    .winner-amount { color: #54e49a; font-size: .86rem; font-weight: 900; text-shadow: 0 0 10px rgba(71,220,145,.28); }
+    .recent-winners-note { margin: 11px 2px 0; color: #8fa1be; font-size: .62rem; line-height: 1.35; }
+
+    .live-section { padding: 84px 0; background: rgba(4,5,35,.8); }
+    .live-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; max-width: 940px; margin: 0 auto; }
+    .live-card {
+      position: relative;
+      min-width: 0;
+      padding: clamp(24px, 4vw, 38px);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 27px;
+      background: linear-gradient(145deg, rgba(19,39,103,.9), rgba(5,9,48,.94));
+      box-shadow: 0 22px 55px rgba(0,0,25,.34);
+      transition: .22s ease;
+    }
+    .live-card::after { content: ""; position: absolute; width: 170px; height: 170px; right: -55px; top: -65px; border-radius: 50%; background: currentColor; opacity: .12; filter: blur(10px); }
+    .live-card:hover { transform: translateY(-5px); border-color: currentColor; }
+    .live-card.facebook { color: #6ea0ff; }
+    .live-card.youtube { color: #ff5268; }
+    .live-icon { display: grid; place-items: center; width: 56px; height: 56px; border-radius: 17px; color: #fff; background: currentColor; box-shadow: 0 0 26px color-mix(in srgb, currentColor 55%, transparent); }
+    .live-icon svg { width: 28px; height: 28px; fill: #fff; }
+    .live-card h3 { margin: 18px 0 6px; color: #fff; font: 800 1.6rem "Changa"; }
+    .live-card p { margin: 0; color: var(--muted); line-height: 1.52; }
+    .live-card span { display: inline-flex; margin-top: 17px; color: currentColor; font-weight: 900; }
+
+    .closing { padding: 82px 0 94px; text-align: center; background: linear-gradient(180deg, rgba(5,5,42,.8), rgba(4,4,31,.9)); }
+    .closing-card {
+      position: relative;
+      padding: clamp(34px, 7vw, 68px);
+      overflow: hidden;
+      border: 1px solid rgba(255, 190, 60, .4);
+      border-radius: 32px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 61, 166, .25), transparent 45%),
+        linear-gradient(145deg, rgba(16,24,91,.92), rgba(7,8,47,.94));
+      box-shadow: var(--shadow);
+    }
+    .closing-card::before, .closing-card::after { content: ""; position: absolute; border-radius: 50%; filter: blur(12px); opacity: .3; }
+    .closing-card::before { width: 180px; height: 180px; left: -70px; bottom: -90px; background: var(--cyan); }
+    .closing-card::after { width: 200px; height: 200px; right: -85px; top: -100px; background: var(--orange); }
+    .closing h2 { position: relative; margin: 9px auto 12px; max-width: 780px; font: 800 clamp(2rem, 5vw, 4rem)/.98 "Changa"; text-wrap: balance; }
+    .closing p { position: relative; max-width: 630px; margin: 0 auto 25px; color: var(--muted); line-height: 1.55; }
+    .closing .cta-primary { position: relative; min-width: min(100%, 330px); }
+
+    footer { padding: 23px 0; border-top: 1px solid rgba(74,223,255,.14); color: #8e9bc4; background: #03031e; font-size: .78rem; }
+    .footer-row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .toast { position: fixed; z-index: 100; left: 50%; bottom: 24px; width: max-content; max-width: calc(100% - 28px); padding: 13px 18px; border: 1px solid rgba(104,238,255,.5); border-radius: 13px; opacity: 0; color: #fff; background: #0b1858; box-shadow: 0 16px 55px rgba(0,0,0,.52), 0 0 24px rgba(33,230,255,.18); transform: translate(-50%, 140%); transition: .3s ease; text-align: center; font-size: .84rem; font-weight: 800; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    .spark { position: fixed; z-index: 90; width: 9px; height: 9px; border-radius: 2px; pointer-events: none; animation: spark-fall 1.15s ease-out forwards; }
+    @keyframes spark-fall { to { transform: translate(var(--dx), var(--dy)) rotate(420deg); opacity: 0; } }
+
+    /* Tema Fortune Vault: rubí, oro líquido y volumen de gabinete casino. */
+    body::before {
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255, 186, 0, .36), transparent 26rem),
+        radial-gradient(circle at 88% 20%, rgba(255, 45, 20, .42), transparent 30rem),
+        radial-gradient(circle at 52% 70%, rgba(178, 0, 35, .4), transparent 38rem),
+        linear-gradient(180deg, #300006, #170004 56%, #090002);
+    }
+    .site-header {
+      border-bottom-color: rgba(255, 207, 54, .46);
+      background: rgba(43, 0, 8, .9);
+      box-shadow: 0 12px 45px rgba(34, 0, 2, .58), 0 1px 22px rgba(255, 159, 0, .2);
+    }
+    .brand-logo {
+      border-color: #fff0a8;
+      background: linear-gradient(145deg, #fff179 0 10%, #ffb000 32%, #ff510b 58%, #c40025 82%, #ffcf2f);
+      box-shadow: 0 0 8px #fff2a0, 0 0 28px rgba(255, 124, 0, .8), inset 0 -9px 14px rgba(95,0,5,.42);
+    }
+    .nav-link:hover, .nav-link[aria-current="page"] {
+      border-color: rgba(255, 225, 103, .72);
+      color: #fff9df;
+      background: linear-gradient(135deg, rgba(255, 174, 0, .34), rgba(186, 0, 34, .72));
+      box-shadow: 0 0 22px rgba(255, 151, 0, .38);
+    }
+    .social:hover { color: #ffd33d; border-color: #ffd33d; box-shadow: 0 0 20px rgba(255,180,0,.42); }
+    .menu-button { border-color: rgba(255,210,63,.5); background: linear-gradient(145deg, #8c001a, #3f000b); }
+    .hero::before {
+      background:
+        repeating-conic-gradient(from 270deg at 50% 40%, rgba(255,202,52,.035) 0 7deg, transparent 7deg 18deg),
+        linear-gradient(90deg, rgba(42,0,7,.78), rgba(31,0,5,.32) 58%, rgba(50,0,4,.5)),
+        linear-gradient(180deg, transparent 66%, #170004);
+    }
+    .live-dot { background: #ffcf37; box-shadow: 0 0 0 6px rgba(255,180,0,.18), 0 0 20px #ff7a00; }
+    .gradient-text {
+      background: linear-gradient(180deg, #fffbd0 0, #ffe95c 22%, #ffb000 48%, #ff5a0a 72%, #ee002e 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      filter: drop-shadow(0 3px 0 rgba(91,0,5,.65)) drop-shadow(0 0 13px rgba(255,166,0,.32));
+    }
+    .cta-primary {
+      border-color: #fff6bf;
+      background: linear-gradient(180deg, #fff39b 0%, #ffd52d 19%, #ff9a00 52%, #ff4a08 76%, #d90925 100%);
+      box-shadow: 0 0 0 5px rgba(255,190,0,.12), 0 0 11px #ffcb32, 0 0 38px rgba(255,69,0,.72), inset 0 3px rgba(255,255,255,.68), inset 0 -7px 12px rgba(131,0,10,.26);
+    }
+    .cta-secondary { border-color: #ffd440; color: #fff7d0; background: linear-gradient(145deg, rgba(145,0,20,.7), rgba(66,0,9,.82)); }
+    .cta-secondary:hover { background: linear-gradient(145deg, #c41224, #6e000d); box-shadow: 0 0 28px rgba(255,168,0,.45); }
+    .micro-trust li::before { color: #ffd63b; }
+    .video-card {
+      border-color: rgba(255, 211, 66, .72);
+      background: linear-gradient(145deg, rgba(125, 0, 19, .9), rgba(37, 0, 8, .94));
+      box-shadow: 0 28px 80px rgba(35,0,2,.62), 0 0 16px rgba(255,214,74,.38), 0 0 52px rgba(255,66,0,.28), inset 0 0 0 1px rgba(255,245,180,.16);
+    }
+    .video-card::before {
+      background: conic-gradient(from 90deg, transparent, rgba(255,221,76,.72), transparent 28%, rgba(255,41,50,.7), transparent 60%, rgba(255,135,0,.76), transparent);
+    }
+    .video-shell {
+      border-color: rgba(255, 218, 81, .54);
+      background:
+        linear-gradient(rgba(69,0,10,.18), rgba(25,0,5,.66)),
+        radial-gradient(circle at 52% 45%, rgba(255,183,0,.32), transparent 26%),
+        repeating-linear-gradient(120deg, transparent 0 32px, rgba(255,220,81,.045) 32px 34px),
+        linear-gradient(145deg, #97001b, #3d000d 76%);
+    }
+    .video-badge { background: linear-gradient(180deg, #ffdf50, #ff6508 62%, #d60025); box-shadow: 0 0 20px rgba(255,112,0,.72); }
+    .play-button {
+      border-color: #fff8bd;
+      color: #4b0008;
+      background: radial-gradient(circle at 34% 25%, #fffbe1 0 12%, #ffe061 26%, #ff9b00 58%, #f12a0b 100%);
+      box-shadow: 0 0 0 12px rgba(255,185,0,.12), 0 0 16px #ffe36b, 0 0 42px rgba(255,78,0,.8);
+    }
+    .platform-chip { border-color: rgba(255,218,81,.3); background: rgba(48,0,8,.86); }
+    .platform-chip:first-child, .platform-chip:last-child { color: #ffd957; }
+    .star-product {
+      background:
+        radial-gradient(circle at 50% 35%, rgba(255, 184, 0, .1), transparent 34rem),
+        linear-gradient(180deg, rgba(17,0,3,.97), rgba(43,0,8,.94) 50%, rgba(12,0,3,.98));
+    }
+    .star-product::before { background: radial-gradient(ellipse at center, rgba(255,175,0,.18), transparent 57%); }
+    .electronic-console {
+      border-color: rgba(255, 218, 78, .88);
+      background:
+        linear-gradient(135deg, rgba(255,188,0,.17), transparent 30%),
+        linear-gradient(145deg, rgba(126,0,20,.97), rgba(30,0,7,.98));
+      box-shadow: 0 28px 80px rgba(31,0,1,.65), 0 0 11px rgba(255,231,119,.72), 0 0 60px rgba(255,78,0,.28), inset 0 0 0 2px rgba(255,232,132,.09);
+    }
+    .electronic-console::before { background: repeating-linear-gradient(0deg, transparent 0 5px, rgba(255,225,106,.024) 5px 6px); }
+    .console-top { border-bottom-color: rgba(255,213,63,.3); }
+    .console-title span { color: #ffe16a; }
+    .signal { color: #fff0a5; }
+    .signal i { background: #ffd437; box-shadow: 0 0 15px #ff9f00; }
+    .board-stage {
+      border-color: rgba(255, 213, 63, .52);
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255,172,0,.2), transparent 55%),
+        linear-gradient(145deg, rgba(104,0,17,.96), rgba(29,0,7,.98));
+      box-shadow: inset 0 0 50px rgba(255,120,0,.15);
+    }
+    .called-number {
+      border-color: rgba(255,211,61,.35);
+      color: #fff2b0;
+      background: linear-gradient(180deg, rgba(168,12,29,.64), rgba(76,0,12,.72));
+    }
+    .called-number.hot {
+      color: #480007;
+      border-color: #fff7c1;
+      background: linear-gradient(180deg, #fff491, #ffc21e 48%, #ff6a00);
+      box-shadow: 0 0 10px #ffe069, 0 0 24px rgba(255,91,0,.76);
+    }
+    .board-housing {
+      border-color: #ffd74d;
+      background:
+        linear-gradient(150deg, rgba(255,193,18,.22), transparent 28%),
+        linear-gradient(150deg, #a40920, #3d000d 70%);
+      box-shadow: 0 0 0 5px rgba(255,194,0,.09), 0 0 13px #ffdb56, 0 0 48px rgba(255,70,0,.42), inset 0 0 35px rgba(255,191,0,.12);
+    }
+    .bingo-letters span { color: #ffe66d; text-shadow: 0 2px 0 #7a000f, 0 0 17px rgba(255,188,0,.82); }
+    .bingo-cell {
+      border-color: rgba(255, 221, 91, .72);
+      background:
+        radial-gradient(circle at 34% 25%, rgba(255,231,127,.3), transparent 27%),
+        linear-gradient(145deg, #d3172e, #840014 57%, #4a000d);
+      box-shadow: inset 0 2px 5px rgba(255,255,255,.25), inset 0 -8px 13px rgba(45,0,5,.42), 0 6px 12px rgba(33,0,2,.42), 0 0 10px rgba(255,133,0,.15);
+      text-shadow: 0 2px 2px #4b0009;
+    }
+    .bingo-cell:hover { border-color: #fff8be; box-shadow: 0 0 12px #ffe16b, 0 0 26px rgba(255,81,0,.82); }
+    .bingo-cell.marked {
+      border-color: #fffbd0;
+      background:
+        radial-gradient(circle at 34% 24%, #fffde2 0 10%, #fff07c 19%, transparent 21%),
+        linear-gradient(145deg, #ffe75a, #ffad00 45%, #ff5809 70%, #d6092e);
+      box-shadow: 0 0 10px #fff9ba, 0 0 32px rgba(255,83,0,1), inset 0 -10px 17px rgba(150,0,20,.28);
+      text-shadow: none;
+    }
+    .control-panel {
+      border-color: rgba(255, 210, 62, .52);
+      background:
+        radial-gradient(circle at 50% 0, rgba(255,186,0,.14), transparent 42%),
+        linear-gradient(160deg, rgba(148,0,23,.95), rgba(42,0,9,.97) 58%);
+      box-shadow: inset 0 0 36px rgba(255,176,0,.1), 0 0 28px rgba(71,0,8,.42);
+    }
+    .control-label { color: #ffdf60; }
+    .progress-card { border-color: rgba(255,211,65,.28); background: rgba(65,0,12,.68); }
+    .progress-fill { background: linear-gradient(90deg, #ffeb67, #ffb300, #ff5a0a, #e0002c); box-shadow: 0 0 16px rgba(255,148,0,.78); }
+    .feature-list i { color: #500008; background: linear-gradient(145deg, #fff28a, #ffb100 62%, #ff5b08); box-shadow: 0 0 15px rgba(255,163,0,.55); }
+    .live-section {
+      background:
+        radial-gradient(circle at 50% 0, rgba(255,169,0,.1), transparent 30rem),
+        linear-gradient(180deg,rgba(15,0,3,.97),rgba(39,0,7,.97));
+    }
+    .live-card {
+      border-color: rgba(255,215,72,.28);
+      box-shadow: 0 22px 55px rgba(36,0,3,.56), inset 0 1px rgba(255,239,168,.08);
+    }
+    .live-card.facebook { background: linear-gradient(145deg,rgba(43,0,8,.98),rgba(13,0,3,.98)); }
+    .live-card.youtube { background: linear-gradient(145deg,rgba(181,0,29,.94),rgba(67,0,12,.98)); }
+    .live-card.facebook, .live-card.youtube { color: #ffd64d; }
+    .live-icon { background: linear-gradient(145deg, #ffe36a, #ff8b00 54%, #e00027); box-shadow: 0 0 24px rgba(255,124,0,.64); }
+    .closing {
+      background:
+        radial-gradient(circle at 50% 0, rgba(255,183,0,.12), transparent 30rem),
+        linear-gradient(180deg, rgba(60,0,10,.92), rgba(18,0,4,.98));
+    }
+    .closing-card {
+      border-color: rgba(255, 219, 87, .72);
+      background:
+        radial-gradient(circle at 50% 0%, rgba(255, 187, 0, .23), transparent 45%),
+        linear-gradient(145deg, rgba(139,0,22,.95), rgba(38,0,8,.97));
+      box-shadow: 0 28px 80px rgba(32,0,2,.68), 0 0 42px rgba(255,90,0,.2);
+    }
+    footer { border-top-color: rgba(255,211,63,.22); color: #d3b891; background: #100003; }
+    .toast { border-color: rgba(255,224,99,.7); background: #670011; box-shadow: 0 16px 55px rgba(35,0,3,.6), 0 0 28px rgba(255,130,0,.32); }
+
+    /* Balance premium definitivo: obsidiana 70%, oro 20%, rubí 10%. */
+    #matter-background { opacity: .7; }
+    body::before {
+      background:
+        radial-gradient(circle at 10% 8%, rgba(29, 111, 190, .25), transparent 28rem),
+        radial-gradient(circle at 88% 18%, rgba(170, 15, 48, .2), transparent 28rem),
+        radial-gradient(circle at 52% 76%, rgba(230, 170, 36, .09), transparent 36rem),
+        linear-gradient(180deg, #07101c, #05070d 58%, #020306);
+    }
+    .site-header {
+      border-bottom-color: rgba(228, 187, 76, .32);
+      background: rgba(4, 7, 13, .91);
+      box-shadow: 0 12px 45px rgba(0,0,0,.48), 0 1px 20px rgba(225,174,43,.11);
+    }
+    .brand-logo {
+      border-color: #fff0ad;
+      background: linear-gradient(145deg,#fff5ad 0 8%,#e7b92e 28%,#ff7b16 52%,#d11b3d 72%,#61236f);
+      box-shadow: 0 0 8px rgba(255,242,172,.8),0 0 26px rgba(232,175,41,.54),inset 0 -9px 14px rgba(45,7,54,.35);
+    }
+    .nav-link:hover, .nav-link[aria-current="page"] {
+      border-color: rgba(238,203,107,.58);
+      background: linear-gradient(135deg,rgba(204,157,40,.24),rgba(26,47,75,.72));
+      box-shadow: 0 0 19px rgba(233,185,56,.2);
+    }
+    .social:hover { color: #f1c84c; border-color: #f1c84c; box-shadow: 0 0 18px rgba(231,180,42,.28); }
+    .menu-button { border-color: rgba(231,190,73,.42); background: linear-gradient(145deg,#17253a,#080d16); }
+    .hero::before {
+      background:
+        repeating-conic-gradient(from 270deg at 50% 40%,rgba(234,192,82,.018) 0 7deg,transparent 7deg 18deg),
+        radial-gradient(circle at 74% 30%,rgba(190,23,56,.16),transparent 25rem),
+        linear-gradient(90deg,rgba(4,9,17,.86),rgba(5,11,21,.48) 58%,rgba(4,7,13,.7)),
+        linear-gradient(180deg,transparent 68%,#05070d);
+    }
+    .live-dot { background: #edc341; box-shadow: 0 0 0 6px rgba(237,195,65,.13),0 0 18px #d55a25; }
+    .gradient-text {
+      background: linear-gradient(96deg,#fff7c4 2%,#f2cb55 30%,#f39a29 51%,#dc3152 72%,#a767ff 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      filter: drop-shadow(0 2px 0 rgba(0,0,0,.6)) drop-shadow(0 0 11px rgba(232,180,52,.17));
+    }
+    .cta-primary {
+      border-color: #fff3b0;
+      color: #1c1211;
+      background: linear-gradient(180deg,#fff3a4 0%,#f3cc52 24%,#df9e23 57%,#c94732 100%);
+      box-shadow: 0 0 0 5px rgba(223,179,55,.08),0 0 10px rgba(255,227,132,.7),0 0 30px rgba(210,83,42,.38),inset 0 2px rgba(255,255,255,.62);
+    }
+    .cta-secondary { border-color: #dcb94d; color: #fff4cb; background: linear-gradient(145deg,rgba(24,39,61,.9),rgba(7,12,20,.92)); }
+    .cta-secondary:hover { background: linear-gradient(145deg,#253d5e,#0c1421); box-shadow: 0 0 25px rgba(218,177,58,.26); }
+    .micro-trust li::before { color: #e5bd40; }
+    .video-card {
+      border-color: rgba(231,196,92,.58);
+      background: linear-gradient(145deg,rgba(17,29,49,.94),rgba(5,9,16,.96));
+      box-shadow: 0 28px 80px rgba(0,0,0,.58),0 0 16px rgba(235,198,84,.24),0 0 50px rgba(110,33,76,.16),inset 0 0 0 1px rgba(255,241,177,.08);
+    }
+    .video-card::before { background: conic-gradient(from 90deg,transparent,rgba(230,191,70,.46),transparent 28%,rgba(191,26,63,.34),transparent 60%,rgba(40,135,208,.38),transparent); }
+    .video-shell {
+      border-color: rgba(229,193,80,.4);
+      background:
+        linear-gradient(rgba(4,10,19,.15),rgba(3,6,12,.68)),
+        radial-gradient(circle at 52% 45%,rgba(210,163,46,.16),transparent 26%),
+        repeating-linear-gradient(120deg,transparent 0 32px,rgba(226,192,88,.025) 32px 34px),
+        linear-gradient(145deg,#172b47,#090e18 76%);
+    }
+    .video-badge { background: linear-gradient(180deg,#df3553,#9d1330 64%,#54091a); box-shadow: 0 0 18px rgba(215,38,74,.46); }
+    .play-button {
+      border-color: #fff2ae;
+      color: #201413;
+      background: radial-gradient(circle at 34% 25%,#fffdf0 0 12%,#f6dc78 28%,#e6ad32 58%,#c94a35 100%);
+      box-shadow: 0 0 0 12px rgba(229,185,62,.08),0 0 14px rgba(255,232,139,.7),0 0 38px rgba(195,77,46,.42);
+    }
+    .platform-chip { border-color: rgba(231,196,89,.25); background: rgba(5,10,17,.88); }
+    .platform-chip:first-child { color: #7db4ff; }
+    .platform-chip:last-child { color: #ff8295; }
+
+    .star-product {
+      background:
+        radial-gradient(circle at 50% 34%,rgba(212,168,55,.08),transparent 33rem),
+        radial-gradient(circle at 90% 55%,rgba(91,45,139,.09),transparent 25rem),
+        linear-gradient(180deg,rgba(4,8,15,.98),rgba(9,18,31,.97) 52%,rgba(3,6,11,.99));
+    }
+    .star-product::before { background: radial-gradient(ellipse at center,rgba(206,161,49,.07),transparent 58%); }
+    .electronic-console {
+      border-color: rgba(231,195,87,.72);
+      background:
+        radial-gradient(circle at 0 0,rgba(190,32,65,.13),transparent 32%),
+        linear-gradient(145deg,rgba(20,31,48,.98),rgba(5,9,15,.99));
+      box-shadow: 0 28px 80px rgba(0,0,0,.64),0 0 10px rgba(242,211,115,.45),0 0 54px rgba(55,103,153,.12),inset 0 0 0 2px rgba(255,235,153,.05);
+    }
+    .electronic-console::before { background: repeating-linear-gradient(0deg,transparent 0 5px,rgba(235,202,100,.018) 5px 6px); }
+    .console-top { border-bottom-color: rgba(224,188,71,.24); }
+    .console-title span { color: #e7c65e; }
+    .signal { color: #cbe8d5; }
+    .signal i { background: #43db91; box-shadow: 0 0 14px #26bd72; }
+    .board-stage {
+      border-color: rgba(223,187,73,.35);
+      background:
+        radial-gradient(circle at 50% 42%,rgba(101,77,172,.12),transparent 54%),
+        linear-gradient(145deg,rgba(19,26,45,.98),rgba(6,10,18,.99));
+      box-shadow: inset 0 0 48px rgba(41,101,158,.09);
+    }
+    .called-number {
+      border-color: rgba(218,182,67,.26);
+      color: #f4e7b8;
+      background: linear-gradient(180deg,rgba(31,50,76,.9),rgba(10,17,29,.92));
+    }
+    .called-number.hot {
+      color: #251a0f;
+      border-color: #fff1ab;
+      background: linear-gradient(180deg,#fff4ad,#e9bf43 48%,#cd6d2e);
+      box-shadow: 0 0 9px rgba(255,235,147,.72),0 0 22px rgba(210,110,45,.42);
+    }
+    .board-housing {
+      border-color: #d9b743;
+      background:
+        linear-gradient(150deg,rgba(217,177,60,.08),transparent 28%),
+        linear-gradient(150deg,#182842,#070c14 72%);
+      box-shadow: 0 0 0 5px rgba(221,180,55,.05),0 0 11px rgba(241,211,114,.5),0 0 42px rgba(40,94,151,.2),inset 0 0 32px rgba(65,125,181,.08);
+    }
+    .bingo-letters span { color: #edcc5a; text-shadow: 0 2px 0 #19110a,0 0 15px rgba(228,181,47,.48); }
+    .bingo-cell {
+      border-color: rgba(235,205,107,.58);
+      box-shadow: inset 0 2px 5px rgba(255,255,255,.22),inset 0 -8px 13px rgba(0,0,0,.35),0 6px 12px rgba(0,0,0,.35);
+      text-shadow: 0 2px 2px rgba(0,0,0,.7);
+    }
+    .bingo-cell:nth-child(5n + 1) { background: radial-gradient(circle at 32% 24%,rgba(133,210,255,.34),transparent 28%),linear-gradient(145deg,#2085c8,#153d79 60%,#0c2149); }
+    .bingo-cell:nth-child(5n + 2) { background: radial-gradient(circle at 32% 24%,rgba(255,149,164,.34),transparent 28%),linear-gradient(145deg,#df3857,#8e193a 60%,#4c0b23); }
+    .bingo-cell:nth-child(5n + 3) { background: radial-gradient(circle at 32% 24%,rgba(203,164,255,.34),transparent 28%),linear-gradient(145deg,#995de0,#583097 60%,#2d175c); }
+    .bingo-cell:nth-child(5n + 4) { background: radial-gradient(circle at 32% 24%,rgba(133,255,206,.34),transparent 28%),linear-gradient(145deg,#25b78a,#147158 60%,#083c31); }
+    .bingo-cell:nth-child(5n + 5) { background: radial-gradient(circle at 32% 24%,rgba(255,211,126,.38),transparent 28%),linear-gradient(145deg,#e89b2c,#a95222 60%,#5e2816); }
+    .bingo-cell:hover { border-color: #fff2ad; box-shadow: 0 0 10px rgba(255,233,151,.75),0 0 24px rgba(211,164,45,.38); }
+    .bingo-cell.marked,
+    .bingo-cell.marked:nth-child(n) {
+      color: #26170d;
+      border-color: #fff8ce;
+      background: radial-gradient(circle at 34% 24%,#fffef1 0 10%,#f7e27e 19%,transparent 21%),linear-gradient(145deg,#f5dc65,#dda633 46%,#d35e35 73%,#aa2141);
+      box-shadow: 0 0 9px rgba(255,248,195,.9),0 0 29px rgba(210,128,43,.58),inset 0 -10px 17px rgba(93,15,37,.24);
+      text-shadow: none;
+    }
+    .control-panel {
+      border-color: rgba(218,180,66,.35);
+      background:
+        radial-gradient(circle at 50% 0,rgba(177,31,64,.12),transparent 42%),
+        linear-gradient(160deg,rgba(25,32,49,.98),rgba(7,11,18,.99) 58%);
+      box-shadow: inset 0 0 34px rgba(115,43,91,.08),0 0 26px rgba(0,0,0,.42);
+    }
+    .control-label { color: #e7c357; }
+    .progress-card { border-color: rgba(218,181,66,.22); background: rgba(8,14,24,.72); }
+    .progress-fill { background: linear-gradient(90deg,#3ab8e5,#7966d9,#d83e72,#e2af3f); box-shadow: 0 0 15px rgba(115,91,204,.45); }
+    .feature-list i { color: #17100a; background: linear-gradient(145deg,#fff0a0,#ddb13b 62%,#c16a32); box-shadow: 0 0 14px rgba(220,176,50,.35); }
+
+    .winner-section {
+      color: #17120b;
+      background:
+        radial-gradient(circle at 16% 12%,rgba(255,255,255,.7),transparent 22rem),
+        radial-gradient(circle at 86% 80%,rgba(151,103,13,.16),transparent 25rem),
+        repeating-conic-gradient(from -12deg at 50% 50%,rgba(255,255,255,.055) 0 8deg,transparent 8deg 18deg),
+        linear-gradient(135deg,#fff8d6 0%,#ead788 42%,#caa43f 100%);
+      box-shadow: inset 0 14px 38px rgba(84,56,8,.12),inset 0 -14px 38px rgba(72,48,7,.16);
+    }
+    .winner-section::before,
+    .winner-section::after { border-color: rgba(255,255,255,.22); box-shadow: 0 0 0 22px rgba(87,60,10,.06),0 0 50px rgba(83,55,7,.1); }
+    .winner-copy .eyebrow { color: #694d13; }
+    .winner-copy h2 span { color: #8e1735; text-shadow: 0 1px 0 rgba(255,255,255,.5); }
+    .winner-copy > p { color: #55451f; }
+    .winner-flow li { border-color: rgba(76,55,15,.16); background: rgba(255,253,237,.52); }
+    .winner-flow li::before { border-color: #f8dea0; background: linear-gradient(145deg,#b92649,#671229); box-shadow: 0 4px 10px rgba(65,13,28,.25),inset 0 2px rgba(255,255,255,.2); }
+    .winner-copy .cta-primary { color: #fff4d0; background: linear-gradient(180deg,#af2546,#6b142b 60%,#320912); }
+    .winner-visual {
+      border-color: #f0cf68;
+      background:
+        repeating-conic-gradient(from 0deg at 50% 48%,rgba(229,193,76,.085) 0 7deg,transparent 7deg 18deg),
+        radial-gradient(circle at 50% 48%,rgba(214,170,48,.2),transparent 28%),
+        linear-gradient(145deg,#17243a,#0a101c 60%,#04070c);
+      box-shadow: 0 0 0 8px rgba(93,66,12,.08),0 22px 55px rgba(46,34,8,.28),0 0 24px rgba(247,221,139,.46),inset 0 0 74px rgba(66,116,159,.08);
+    }
+    .winner-podium h3 { text-shadow: 0 3px 0 #060a10,0 0 21px rgba(226,180,47,.33); }
+    .winner-podium p { color: #d6dcea; }
+    .verification-badge { background: rgba(4,8,14,.64); }
+
+    .live-section {
+      background:
+        radial-gradient(circle at 50% 0,rgba(204,159,42,.075),transparent 30rem),
+        linear-gradient(180deg,#04070c,#07101b);
+    }
+    .live-card { border-color: rgba(224,188,75,.24); box-shadow: 0 22px 55px rgba(0,0,0,.48),inset 0 1px rgba(255,239,168,.05); }
+    .live-card.facebook { color: #73a8ff; background: linear-gradient(145deg,#142b50,#080e18 72%); }
+    .live-card.youtube { color: #ff6279; background: linear-gradient(145deg,#551124,#120811 72%); }
+    .live-icon { background: currentColor; box-shadow: 0 0 22px color-mix(in srgb,currentColor 38%,transparent); }
+    .closing {
+      background:
+        radial-gradient(circle at 50% 0,rgba(212,168,48,.08),transparent 30rem),
+        linear-gradient(180deg,#07101b,#020305);
+    }
+    .closing-card {
+      border-color: rgba(229,192,75,.5);
+      background:
+        radial-gradient(circle at 50% 0%,rgba(181,39,68,.12),transparent 45%),
+        linear-gradient(145deg,rgba(22,34,53,.97),rgba(5,9,15,.99));
+      box-shadow: 0 28px 80px rgba(0,0,0,.6),0 0 38px rgba(211,166,44,.1);
+    }
+    footer { border-top-color: rgba(221,182,60,.18); color: #9eabc0; background: #020305; }
+    .toast { border-color: rgba(230,194,82,.55); background: #121d2c; box-shadow: 0 16px 55px rgba(0,0,0,.6),0 0 24px rgba(205,158,36,.16); }
+
+    /* Fusión GANO+1: identidad original + profundidad y movimiento premium. */
+    body::before {
+      background:
+        radial-gradient(circle at 11% 10%,rgba(17,149,255,.32),transparent 28rem),
+        radial-gradient(circle at 86% 20%,rgba(217,48,255,.24),transparent 30rem),
+        radial-gradient(circle at 50% 72%,rgba(255,110,16,.1),transparent 34rem),
+        linear-gradient(180deg,#080946,#05062f 56%,#030421);
+    }
+    .site-header {
+      border-bottom-color: rgba(50,211,255,.35);
+      background: rgba(4,5,42,.9);
+      box-shadow: 0 12px 45px rgba(0,0,25,.46),0 1px 20px rgba(23,186,255,.15);
+    }
+    .nav-link:hover, .nav-link[aria-current="page"] {
+      border-color: rgba(99,232,255,.72);
+      background: linear-gradient(135deg,rgba(20,181,255,.42),rgba(48,53,174,.72));
+      box-shadow: 0 0 22px rgba(25,202,255,.34);
+    }
+    .hero {
+      padding-top: 56px;
+      background:
+        radial-gradient(circle at 72% 30%,rgba(38,211,255,.13),transparent 24rem),
+        radial-gradient(circle at 12% 76%,rgba(192,45,255,.16),transparent 22rem);
+    }
+    .hero::before {
+      background:
+        repeating-conic-gradient(from 270deg at 72% 40%,rgba(47,213,255,.055) 0 5deg,transparent 5deg 15deg),
+        radial-gradient(circle at 72% 36%,rgba(26,206,255,.19),transparent 21rem),
+        linear-gradient(90deg,rgba(5,7,52,.84),rgba(8,8,69,.46) 56%,rgba(12,5,65,.58)),
+        linear-gradient(180deg,transparent 69%,#05062f);
+    }
+    .hero::after { background: linear-gradient(transparent,#05062f); }
+    .hero-grid { grid-template-columns:minmax(0,1.03fr) minmax(410px,.97fr); gap:clamp(26px,4vw,54px); }
+    .hero h1.hero-logo {
+      display:flex;
+      align-items:center;
+      width:max-content;
+      max-width:100%;
+      margin:16px 0 10px;
+      font:800 clamp(4.4rem,8vw,7rem)/.86 "Changa";
+      letter-spacing:-.075em;
+      white-space:nowrap;
+      filter:drop-shadow(0 10px 18px rgba(0,0,30,.55));
+    }
+    .hero-logo-word,
+    .hero-logo-tail {
+      display:inline-block;
+      color:#fff8e9;
+      -webkit-text-stroke:.045em #ff8a1d;
+      paint-order:stroke fill;
+      text-shadow:
+        0 0 3px #fff,
+        0 0 9px #24dcff,
+        0 0 18px rgba(26,203,255,.9),
+        0 .07em 0 #e83e16,
+        0 .11em .05em rgba(0,0,0,.55);
+    }
+    .hero-logo-tail {
+      margin-left:.035em;
+      color:#ffe052;
+      -webkit-text-stroke:.045em #ff6817;
+    }
+    .hero-logo-ball {
+      position:relative;
+      display:inline-grid;
+      place-items:center;
+      width:.91em;
+      height:.91em;
+      margin-left:.02em;
+      border:.055em solid #fff8cf;
+      border-radius:50%;
+      color:#17123a;
+      background:
+        radial-gradient(circle at 50% 48%,#fff 0 32%,#fff8d0 33% 39%,transparent 40%),
+        radial-gradient(circle at 34% 24%,#fff7bd 0 8%,#ffd43f 20%,#ff8d16 53%,#f23d25 76%,#b9166b);
+      box-shadow:0 0 .08em #fff,0 0 .18em #20dcff,0 0 .32em rgba(26,211,255,.68),inset 0 -.1em .12em rgba(124,4,74,.25);
+      font-size:.74em;
+      letter-spacing:0;
+      text-shadow:none;
+      -webkit-text-stroke:0;
+    }
+    .hero-tagline {
+      display:block;
+      margin-bottom:11px;
+      color:#fff;
+      font:800 clamp(1.08rem,2vw,1.42rem)/1.25 "Changa";
+      text-shadow:0 3px 14px rgba(0,0,0,.6);
+    }
+    .live-dot { background:#ffbd24; box-shadow:0 0 0 6px rgba(255,122,27,.14),0 0 20px #ff512b; }
+    .gradient-text {
+      background:linear-gradient(92deg,#61edff 0%,#ffd74e 30%,#ff8520 52%,#f34880 75%,#ba65ff 100%);
+      background-clip:text;
+      -webkit-background-clip:text;
+    }
+    .cta-primary {
+      border-color:#fff1a5;
+      background:linear-gradient(180deg,#ffe45d,#ff9a18 48%,#ff511a 75%,#e32843);
+      box-shadow:0 0 0 5px rgba(255,118,18,.1),0 0 11px rgba(255,225,94,.8),0 0 34px rgba(255,69,31,.55),inset 0 2px rgba(255,255,255,.58);
+    }
+    .cta-secondary { border-color:#32dfff;color:#eefdff;background:linear-gradient(145deg,rgba(20,106,190,.72),rgba(20,29,101,.88)); }
+    .cta-secondary:hover { background:linear-gradient(145deg,#168edb,#38329f);box-shadow:0 0 28px rgba(36,218,255,.38); }
+    .micro-trust li::before { color:#4ef29e; }
+    .video-card {
+      border-color:rgba(76,225,255,.72);
+      background:linear-gradient(145deg,rgba(14,33,108,.94),rgba(7,8,54,.96));
+      box-shadow:0 28px 80px rgba(0,0,28,.6),0 0 15px rgba(47,220,255,.45),0 0 54px rgba(188,55,255,.22),inset 0 0 0 1px rgba(255,255,255,.08);
+    }
+    .video-card::before { background:conic-gradient(from 90deg,transparent,rgba(35,220,255,.72),transparent 28%,rgba(218,46,255,.5),transparent 60%,rgba(255,122,22,.62),transparent); }
+    .video-shell {
+      border-color:rgba(93,231,255,.58);
+      background:
+        repeating-conic-gradient(from 0deg at 50% 50%,rgba(54,222,255,.08) 0 6deg,transparent 6deg 17deg),
+        radial-gradient(circle at 50% 50%,rgba(42,218,255,.3),transparent 27%),
+        linear-gradient(145deg,#172a85,#10054e 73%);
+    }
+    .video-shell::after { box-shadow:inset 0 0 100px rgba(1,2,30,.64); }
+    .video-badge { background:linear-gradient(180deg,#ff4f75,#d41551 62%,#7d0a37);box-shadow:0 0 20px rgba(255,49,109,.58); }
+    .play-button {
+      position:relative;
+      z-index:2;
+      width:clamp(120px,13vw,172px);
+      height:clamp(120px,13vw,172px);
+      border:6px solid #fff6b8;
+      color:#12133c;
+      background:radial-gradient(circle at 34% 24%,#fffbd3 0 7%,#ffe34e 18%,#ff9a18 51%,#f43945 74%,#b51992 100%);
+      box-shadow:0 0 0 12px rgba(41,220,255,.1),0 0 15px #fff2a1,0 0 42px rgba(31,224,255,.86),0 0 70px rgba(221,45,255,.35);
+    }
+    .play-button::before {
+      content:"";
+      position:absolute;
+      inset:23%;
+      border:4px solid rgba(255,174,28,.7);
+      border-radius:50%;
+      background:radial-gradient(circle at 37% 27%,#fff,#fffdf1 68%,#ece6d3);
+      box-shadow:inset 0 -8px 12px rgba(88,80,68,.12);
+    }
+    .video-ball-number { position:relative;z-index:2;font:900 clamp(2.6rem,5vw,4.2rem) "Changa"; }
+    .play-button svg {
+      position:absolute;
+      z-index:3;
+      right:5px;
+      bottom:6px;
+      width:37px;
+      height:37px;
+      padding:8px;
+      border:2px solid #d9fbff;
+      border-radius:50%;
+      fill:#fff;
+      background:linear-gradient(145deg,#26ddff,#1272de);
+      box-shadow:0 0 14px rgba(35,219,255,.82);
+      transform:none;
+    }
+    .orbit-ball {
+      position:absolute;
+      z-index:1;
+      display:grid;
+      place-items:center;
+      width:var(--orbit-size);
+      aspect-ratio:1;
+      border:3px solid rgba(255,255,255,.88);
+      border-radius:50%;
+      color:#14143d;
+      background:radial-gradient(circle at 34% 25%,#fff 0 12%,var(--orbit-color) 28%,var(--orbit-deep) 78%);
+      box-shadow:0 0 18px var(--orbit-color);
+      font:900 calc(var(--orbit-size) * .33) "Changa";
+      animation:orbit-float 4.4s ease-in-out infinite;
+    }
+    .orbit-one { --orbit-size:48px;--orbit-color:#64f28f;--orbit-deep:#119460;left:9%;top:19%; }
+    .orbit-two { --orbit-size:42px;--orbit-color:#52dcff;--orbit-deep:#1a75cf;right:11%;top:16%;animation-delay:-1.1s; }
+    .orbit-three { --orbit-size:55px;--orbit-color:#ffdf53;--orbit-deep:#ff6820;right:8%;bottom:15%;animation-delay:-2.3s; }
+    .orbit-four { --orbit-size:38px;--orbit-color:#ff76ca;--orbit-deep:#a727a3;left:13%;bottom:14%;animation-delay:-3.2s; }
+    @keyframes orbit-float { 50% { translate:0 -13px;rotate:16deg;filter:brightness(1.14); } }
+    .platform-chip { border-color:rgba(86,226,255,.35);background:rgba(4,6,42,.86); }
+    .platform-chip:first-child { color:#79b2ff; }
+    .platform-chip:last-child { color:#ff7592; }
+
+    .star-product {
+      background:
+        radial-gradient(circle at 12% 44%,rgba(22,178,255,.12),transparent 26rem),
+        radial-gradient(circle at 88% 28%,rgba(184,51,255,.13),transparent 27rem),
+        linear-gradient(180deg,rgba(5,6,44,.98),rgba(8,8,62,.97) 52%,rgba(4,5,37,.99));
+    }
+    .electronic-console {
+      border-color:rgba(68,218,255,.65);
+      background:
+        radial-gradient(circle at 0 0,rgba(33,198,255,.11),transparent 32%),
+        linear-gradient(145deg,rgba(14,26,87,.98),rgba(5,7,43,.99));
+      box-shadow:0 28px 80px rgba(0,0,28,.66),0 0 11px rgba(77,229,255,.5),0 0 54px rgba(167,57,255,.13),inset 0 0 0 2px rgba(255,255,255,.04);
+    }
+    .console-title span { color:#6cecff; }
+    .board-stage { border-color:rgba(69,220,255,.38);background:radial-gradient(circle at 50% 42%,rgba(91,60,203,.14),transparent 54%),linear-gradient(145deg,rgba(12,22,79,.98),rgba(5,7,43,.99)); }
+    .board-housing { border-color:#49ddff;background:linear-gradient(150deg,rgba(81,222,255,.09),transparent 28%),linear-gradient(150deg,#1b3a92,#0b1253 72%);box-shadow:0 0 0 5px rgba(44,216,255,.06),0 0 12px rgba(96,236,255,.65),0 0 44px rgba(94,48,210,.25),inset 0 0 32px rgba(47,197,255,.1); }
+    .bingo-letters span { color:#75efff;text-shadow:0 0 16px rgba(40,218,255,.7); }
+    .control-panel { border-color:rgba(185,76,255,.36);background:radial-gradient(circle at 50% 0,rgba(218,47,255,.1),transparent 42%),linear-gradient(160deg,rgba(31,24,90,.98),rgba(6,9,43,.99) 58%); }
+    .control-label { color:#ff8cd8; }
+
+    .winner-section {
+      color:#fff;
+      background:
+        radial-gradient(circle at 15% 16%,rgba(35,205,255,.16),transparent 24rem),
+        radial-gradient(circle at 86% 75%,rgba(227,73,255,.14),transparent 26rem),
+        repeating-conic-gradient(from -12deg at 50% 50%,rgba(66,221,255,.025) 0 8deg,transparent 8deg 18deg),
+        linear-gradient(135deg,#090a56 0%,#07073f 48%,#13064c 100%);
+      box-shadow:inset 0 14px 42px rgba(0,0,31,.34),inset 0 -14px 42px rgba(0,0,31,.4);
+    }
+    .winner-section::before,.winner-section::after { border-color:rgba(65,219,255,.16);box-shadow:0 0 0 22px rgba(183,60,255,.05),0 0 50px rgba(31,194,255,.1); }
+    .winner-copy .eyebrow { color:#62eaff; }
+    .winner-copy h2 span { color:#ffbd3d;text-shadow:0 0 18px rgba(255,139,25,.3); }
+    .winner-copy > p { color:#c8d4f4; }
+    .winner-flow li { color:#eef5ff;border-color:rgba(78,217,255,.18);background:rgba(16,35,91,.54); }
+    .winner-flow li::before { border-color:#ffec9a;background:linear-gradient(145deg,#ff9f18,#eb3d3e 62%,#a81674);box-shadow:0 4px 10px rgba(0,0,35,.35),0 0 12px rgba(255,90,31,.28); }
+    .winner-copy .cta-primary { color:#241031;background:linear-gradient(180deg,#ffe05c,#ff9519 56%,#f04a31); }
+    .winner-visual { border-color:#62e5ff;background:repeating-conic-gradient(from 0deg at 50% 48%,rgba(68,218,255,.07) 0 7deg,transparent 7deg 18deg),radial-gradient(circle at 50% 48%,rgba(209,77,255,.17),transparent 28%),linear-gradient(145deg,#142770,#090c49 60%,#05062f);box-shadow:0 0 0 8px rgba(50,213,255,.06),0 22px 55px rgba(0,0,31,.5),0 0 24px rgba(89,231,255,.48),inset 0 0 74px rgba(128,58,213,.1); }
+
+    .live-section { background:radial-gradient(circle at 50% 0,rgba(53,206,255,.08),transparent 30rem),linear-gradient(180deg,#04052f,#07083e); }
+    .closing { background:radial-gradient(circle at 50% 0,rgba(191,62,255,.08),transparent 30rem),linear-gradient(180deg,#07083e,#030421); }
+    .closing-card { border-color:rgba(80,222,255,.46);background:radial-gradient(circle at 50% 0%,rgba(190,56,255,.12),transparent 45%),linear-gradient(145deg,rgba(15,28,87,.97),rgba(5,7,43,.99));box-shadow:0 28px 80px rgba(0,0,29,.62),0 0 38px rgba(54,214,255,.12); }
+    footer { border-top-color:rgba(62,215,255,.18);background:#02031e; }
+
+    @media (max-width:980px) {
+      .hero h1.hero-logo { justify-content:center;margin-inline:auto; }
+      .hero-tagline { text-align:center; }
+    }
+    @media (max-width:700px) {
+      .hero h1.hero-logo { font-size:clamp(3.15rem,16.2vw,5rem); }
+      .play-button { width:112px;height:112px; }
+      .video-ball-number { font-size:2.65rem; }
+      .orbit-one { left:5%;top:15%; }
+      .orbit-two { right:5%;top:13%; }
+      .orbit-three { right:4%;bottom:13%; }
+      .orbit-four { left:7%;bottom:12%; }
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid, .console-grid, .winner-layout { grid-template-columns: 1fr; }
+      .hero-copy { max-width: 760px; text-align: center; margin-inline: auto; }
+      .hero-copy > p { margin-inline: auto; }
+      .hero-actions, .micro-trust { justify-content: center; }
+      .video-card { max-width: 780px; width: 100%; margin-inline: auto; }
+      .control-panel { display: grid; grid-template-columns: minmax(0,1fr) minmax(220px,.7fr); gap: 18px; align-items: center; }
+      .control-panel .progress-card { margin: 0; }
+      .control-panel .feature-list { margin: 0; }
+      .control-panel .cta-primary { grid-column: 1 / -1; }
+      .winner-copy { max-width: 760px; text-align: center; margin-inline: auto; }
+      .winner-copy > p { margin-inline: auto; }
+      .winner-flow { max-width: 620px; margin-inline: auto; margin-block: 22px 25px; text-align: left; }
+      .winner-copy .cta-primary { margin-inline: auto; }
+      .nav-links {
+        position: fixed;
+        inset: 75px 16px auto;
+        display: none;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: rgba(5,7,45,.98);
+        box-shadow: var(--shadow);
+        flex-direction: column;
+      }
+      .nav-links.open { display: flex; }
+      .nav-link { width: 100%; text-align: center; }
+      .menu-button { display: grid; place-items: center; }
+      .socials { margin-left: auto; }
+    }
+    @media (max-width: 700px) {
+      .container { width: min(100% - 22px, 1180px); }
+      .nav { min-height: 65px; gap: 10px; }
+      .brand-domain { display: none; }
+      .brand-logo { min-width: 90px; height: 38px; font-size: 1.08rem; }
+      .nav-links { top: 66px; }
+      .socials { display: none; }
+      .hero { min-height: auto; padding: 49px 0 68px; }
+      .hero h1 { font-size: clamp(2.45rem, 14vw, 4rem); }
+      .hero-actions { flex-direction: column; }
+      .cta-primary, .cta-secondary { width: 100%; }
+      .micro-trust { display: grid; gap: 8px; }
+      .video-card { padding: 7px; border-radius: 21px; }
+      .video-shell { border-radius: 15px; }
+      .play-button { width: 62px; height: 62px; margin-bottom: 10px; }
+      .video-placeholder span { display: none; }
+      .platform-chips { right: 9px; bottom: 9px; }
+      .platform-chip { padding: 5px 7px; font-size: .61rem; }
+      .star-product { padding: 68px 0 72px; }
+      .winner-section { padding: 72px 0; }
+      .winner-visual { min-height: 450px; }
+      .electronic-console { border-radius: 24px; }
+      .console-top { align-items: flex-start; }
+      .console-title h3 { font-size: 1.22rem; }
+      .signal { padding-top: 4px; font-size: .66rem; }
+      .board-stage { padding: 10px; }
+      .board-housing { padding: 9px; border-radius: 18px; }
+      .bingo-letters, .bingo-board { gap: 5px; }
+      .bingo-cell { border-radius: 9px; font-size: clamp(.66rem, 4vw, .92rem); }
+      .called-strip { gap: 4px; }
+      .called-number { padding: 6px 2px; font-size: .61rem; }
+      .control-panel { display: block; }
+      .control-panel .progress-card { margin: 17px 0; }
+      .control-panel .feature-list { margin-bottom: 17px; }
+      .live-section { padding: 68px 0; }
+      .live-grid { grid-template-columns: 1fr; }
+      .footer-row { justify-content: center; text-align: center; }
+    }
+    @media (max-width: 620px) {
+      .winner-visual { min-height: auto; grid-template-columns: 1fr; padding: 16px; }
+      .winner-podium { padding: 20px 4px 12px; }
+      .recent-winners-panel { padding: 13px; border-radius: 17px; }
+      .recent-winner { grid-template-columns: 25px 34px minmax(0,1fr) auto; gap: 6px; padding: 7px; }
+      .winner-rank { width: 25px; height: 25px; }
+      .winner-avatar { width: 34px; height: 34px; }
+      .winner-person, .winner-amount { font-size: .75rem; }
+    }
+    @media (max-width: 340px) {
+      .container { width: calc(100% - 16px); }
+      .electronic-console { padding: 10px; }
+      .board-stage { padding: 7px; }
+      .board-housing { padding: 7px; }
+      .bingo-letters, .bingo-board { gap: 4px; }
+      .bingo-cell { border-radius: 7px; }
+      .console-top { gap: 7px; }
+      .signal span { display: none; }
+    }
+    @media (max-width: 700px) {
+      .video-shell {
+        aspect-ratio: 4 / 3;
+        min-height: 190px;
+      }
+      .video-placeholder {
+        width: 100%;
+        padding: 12px 8px 36px;
+      }
+      .video-shell .play-button {
+        width: 96px;
+        height: 96px;
+        margin-bottom: 7px;
+      }
+      .video-placeholder .video-ball-number {
+        display: block;
+        margin: 0;
+        color: #15144d;
+        font-size: 2.25rem;
+      }
+      .video-placeholder strong {
+        display: none;
+      }
+      .video-shell .play-button svg {
+        width: 26px;
+        height: 26px;
+        right: 0;
+        bottom: 1px;
+      }
+    }
+
+    /* Portada fiel al arte original suministrado por el cliente. */
+    body {
+      background: #020329;
+    }
+    main {
+      z-index: auto;
+    }
+    #matter-background {
+      z-index: 2;
+      opacity: .54;
+      filter: saturate(190%) contrast(114%) brightness(1.08);
+      mix-blend-mode: screen;
+    }
+    .site-header {
+      z-index: 20;
+      border-bottom-color: rgba(37, 220, 255, .35);
+      background: rgba(2, 3, 43, .94);
+      box-shadow: 0 10px 34px rgba(0, 0, 30, .72), 0 0 24px rgba(28, 201, 255, .08);
+      backdrop-filter: blur(18px) saturate(180%);
+    }
+    .nav {
+      min-height: 64px;
+    }
+    .brand-domain {
+      font: 800 clamp(1.2rem, 2vw, 1.72rem) "Changa";
+      color: #fff;
+      text-shadow: 0 2px 12px rgba(255,255,255,.14);
+    }
+    .brand-logo {
+      display: block;
+      width: 176px;
+      height: 44px;
+      min-width: 0;
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      overflow: hidden;
+      color: transparent;
+      background-color: transparent;
+      background-image: url("./assets/gano-plus-landing-exact.png");
+      background-repeat: no-repeat;
+      background-size: 788.58% auto;
+      background-position: 24.81% 1.79%;
+      box-shadow: none;
+      font-size: 0;
+      text-shadow: none;
+    }
+    .nav-link {
+      color: #f8fbff;
+      font-weight: 800;
+    }
+    .nav-link:hover,
+    .nav-link[aria-current="page"] {
+      border-color: #35ddff;
+      background: linear-gradient(180deg, #159ee8, #06579f);
+      box-shadow: 0 0 9px #29d9ff, inset 0 0 10px rgba(255,255,255,.28);
+    }
+    .social {
+      color: #fff;
+      background: transparent;
+    }
+    .exact-stage {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      height: clamp(110px, 19.493vw, 269px);
+      margin-inline: auto;
+      overflow: hidden;
+      isolation: isolate;
+      background: #0A1C5C;
+      box-shadow:
+        0 34px 90px rgba(0,0,30,.72),
+        inset 0 -1px 0 rgba(58,218,255,.34);
+    }
+    .exact-stage::before {
+      content: "";
+      position: absolute;
+      z-index: 0;
+      inset: -28px;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(10,28,92,.26), rgba(10,28,92,.05) 22% 78%, rgba(10,28,92,.26)),
+        url("./assets/gano-plus-landing-exact.png") center 7.8% / cover no-repeat;
+      filter: blur(18px) saturate(128%) brightness(.78);
+      transform: scale(1.045);
+    }
+    .exact-stage::after {
+      content: "";
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(90deg, rgba(2,3,38,.22), transparent 12% 88%, rgba(2,3,38,.22)),
+        repeating-linear-gradient(180deg, rgba(255,255,255,.018) 0 1px, transparent 1px 4px);
+      box-shadow: inset 0 0 70px rgba(0,0,38,.28);
+    }
+    .exact-stage-art {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      left: 50%;
+      display: block;
+      width: min(100%, 1380px);
+      height: auto;
+      max-width: none;
+      transform: translate(-50%, -8.510638%);
+      transform-origin: 50% 0;
+      filter: saturate(122%) contrast(105%) brightness(1.04);
+      user-select: none;
+      pointer-events: none;
+    }
+    .exact-stage-play {
+      position: absolute;
+      z-index: 4;
+      top: 5%;
+      left: 66.5%;
+      width: 16%;
+      aspect-ratio: 1;
+      border: 0;
+      border-radius: 50%;
+      color: transparent;
+      background: transparent;
+      cursor: pointer;
+    }
+    .exact-stage-play:hover {
+      box-shadow: 0 0 0 4px rgba(255,242,135,.76), 0 0 38px #29e7ff, 0 0 74px rgba(255,43,184,.7);
+    }
+    .exact-stage-play:focus-visible {
+      outline-color: #fff06a;
+    }
+    .exact-stage-carton,
+    .exact-stage-winners,
+    .exact-stage-info {
+      display: none;
+      position: absolute;
+      z-index: 4;
+      border-radius: 18px;
+      background: transparent;
+    }
+    .exact-stage-carton {
+      left: 26%;
+      top: 54%;
+      width: 20%;
+      height: 40%;
+    }
+    .exact-stage-winners {
+      right: 1.5%;
+      top: 48%;
+      width: 20%;
+      height: 48%;
+    }
+    .exact-stage-info {
+      left: 52.2%;
+      top: 82.5%;
+      display: grid;
+      place-items: center;
+      width: 22.3%;
+      height: 8.5%;
+      border: 2px solid #2ce7ff;
+      color: #fff;
+      background: linear-gradient(180deg, #28c8ff, #087dcc 60%, #064586);
+      box-shadow: 0 0 10px #30ddff, inset 0 0 14px rgba(255,255,255,.28);
+      font: 900 clamp(.58rem, 1.35vw, 1.1rem) "Exo 2";
+      text-transform: uppercase;
+      text-shadow: 0 2px 4px rgba(0,0,70,.72);
+    }
+    .exact-stage-info-copy {
+      display: none;
+      position: absolute;
+      z-index: 4;
+      left: 51.4%;
+      bottom: .4%;
+      width: 24%;
+      padding: .35em;
+      color: #d8e9ff;
+      background: rgba(3,4,44,.92);
+      font-size: clamp(.35rem, .72vw, .67rem);
+      text-align: center;
+    }
+    .exact-stage-carton:hover,
+    .exact-stage-winners:hover,
+    .exact-stage-info:hover {
+      box-shadow: 0 0 0 2px rgba(47,226,255,.76), 0 0 30px rgba(42,224,255,.44);
+    }
+    .hero {
+      display: none;
+    }
+    .star-product,
+    .winner-section,
+    .live-section,
+    .closing,
+    footer {
+      position: relative;
+      z-index: 3;
+    }
+    .star-product {
+      border-top: 1px solid rgba(46,225,255,.22);
+      background:
+        radial-gradient(circle at 50% 0, rgba(20,126,255,.17), transparent 36rem),
+        linear-gradient(180deg, rgba(3,4,48,.98), rgba(5,2,39,.98));
+    }
+    @media (min-width: 701px) {
+      .nav {
+        gap: 12px;
+      }
+      .brand {
+        gap: 9px;
+      }
+      .brand-domain {
+        font-size: clamp(1rem, 1.7vw, 1.45rem);
+      }
+      .brand-logo {
+        width: 148px;
+        height: 37px;
+      }
+      .menu-button {
+        display: none !important;
+      }
+      .nav-links {
+        position: static !important;
+        display: flex !important;
+        flex-direction: row !important;
+        align-items: center !important;
+        gap: 4px !important;
+        width: auto !important;
+        margin-left: auto;
+        padding: 0 !important;
+        border: 0 !important;
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+      .nav-link {
+        padding: 8px 9px;
+        font-size: clamp(.72rem, 1.2vw, .86rem);
+      }
+      .socials {
+        margin-left: 0 !important;
+        gap: 6px;
+      }
+      .social {
+        width: 32px;
+        height: 32px;
+      }
+    }
+    @media (max-width: 700px) {
+      main {
+        position: relative;
+        z-index: 1;
+      }
+      #matter-background {
+        z-index: 0;
+        opacity: .82;
+      }
+      .exact-stage {
+        display: none;
+      }
+      .hero {
+        display: block;
+      }
+      .brand-logo {
+        width: 104px;
+        height: 26px;
+      }
+    }
+
+    /* Sistema cromático oficial: intenso, saturado y con jerarquía legible. */
+    :root {
+      --night: #0A1C5C;
+      --night-2: #071647;
+      --panel: rgba(10, 28, 92, .92);
+      --cyan: #00D2FF;
+      --blue: #0A1C5C;
+      --pink: #E6005C;
+      --orange: #FF6600;
+      --gold: #FFD700;
+      --bronze: #C69136;
+      --lime: #43F0B0;
+      --white: #F7FBFF;
+      --muted: #B8D4FF;
+      --line: rgba(0, 210, 255, .5);
+      --shadow: 0 30px 90px rgba(2, 8, 40, .72);
+    }
+    body {
+      color: var(--white);
+      background: #061341;
+    }
+    body::before {
+      background:
+        radial-gradient(circle at 12% 24%, rgba(0,210,255,.2), transparent 31rem),
+        radial-gradient(circle at 86% 30%, rgba(230,0,92,.17), transparent 28rem),
+        radial-gradient(circle at 50% 78%, rgba(255,102,0,.11), transparent 32rem),
+        linear-gradient(180deg, #071647, #0A1C5C 38%, #061341 76%, #040D32);
+    }
+    #matter-background {
+      opacity: .46;
+      filter: saturate(205%) contrast(116%) brightness(1.08);
+    }
+    .site-header {
+      border-bottom-color: rgba(0,210,255,.52);
+      background: rgba(6, 19, 65, .96);
+      box-shadow: 0 10px 34px rgba(2,8,40,.74), 0 0 24px rgba(0,210,255,.12);
+    }
+    .nav-link:hover,
+    .nav-link[aria-current="page"] {
+      border-color: #00D2FF;
+      background: linear-gradient(180deg, #00BCE8, #0A1C5C);
+      box-shadow: 0 0 8px #00D2FF, inset 0 0 10px rgba(247,251,255,.24);
+    }
+    .social:hover {
+      color: #FFD700;
+      border-color: #00D2FF;
+      box-shadow: 0 0 18px rgba(0,210,255,.5);
+    }
+    .exact-stage {
+      border-bottom: 2px solid rgba(0,210,255,.72);
+      background: #0A1C5C;
+      box-shadow:
+        0 16px 50px rgba(2,8,40,.72),
+        0 0 28px rgba(0,210,255,.2);
+    }
+    .exact-stage-art {
+      filter: saturate(132%) contrast(108%) brightness(1.06);
+    }
+    .exact-stage::after {
+      background:
+        linear-gradient(90deg, rgba(10,28,92,.16), transparent 14% 86%, rgba(10,28,92,.16)),
+        repeating-linear-gradient(180deg, rgba(247,251,255,.018) 0 1px, transparent 1px 4px);
+      box-shadow: inset 0 0 54px rgba(3,9,43,.22);
+    }
+    .exact-stage-carton,
+    .exact-stage-winners,
+    .exact-stage-info,
+    .exact-stage-info-copy {
+      display: none !important;
+    }
+    .hero {
+      display: none !important;
+    }
+    .star-product {
+      padding: clamp(62px, 8vw, 112px) 0;
+      border-top: 0;
+      background:
+        radial-gradient(circle at 52% 0, rgba(0,210,255,.17), transparent 30rem),
+        radial-gradient(circle at 90% 60%, rgba(230,0,92,.11), transparent 24rem),
+        linear-gradient(180deg, #061341, #0A1C5C 55%, #071647);
+    }
+    .section-heading {
+      max-width: 860px;
+      margin-inline: auto;
+    }
+    .section-heading h2 {
+      color: #F7FBFF;
+      text-shadow: 0 4px 22px rgba(0,210,255,.16);
+    }
+    .gradient-text {
+      color: #00D2FF;
+      background: none;
+      -webkit-background-clip: initial;
+      background-clip: initial;
+      -webkit-text-fill-color: currentColor;
+      text-shadow: 0 0 18px rgba(0,210,255,.48);
+    }
+    .section-heading p {
+      max-width: 70ch;
+      color: #B8D4FF;
+    }
+    .electronic-console {
+      border-color: rgba(0,210,255,.82);
+      background:
+        linear-gradient(145deg, rgba(10,28,92,.97), rgba(5,16,61,.98)),
+        #0A1C5C;
+      box-shadow:
+        0 0 0 1px rgba(255,215,0,.18),
+        0 0 24px rgba(0,210,255,.32),
+        0 34px 90px rgba(2,8,40,.72);
+    }
+    .console-top {
+      border-bottom-color: rgba(0,210,255,.26);
+    }
+    .console-title > span,
+    .control-label {
+      color: #00D2FF;
+    }
+    .signal i,
+    .live-dot {
+      background: #FFD700;
+      box-shadow: 0 0 12px #FFD700;
+    }
+    .board-stage {
+      border-color: rgba(0,210,255,.36);
+      background:
+        radial-gradient(circle at 50% 42%, rgba(0,210,255,.13), transparent 26rem),
+        linear-gradient(180deg, rgba(4,14,56,.86), rgba(10,28,92,.76));
+    }
+    .called-number {
+      border-color: rgba(0,210,255,.42);
+      background: linear-gradient(180deg, #102C79, #071647);
+    }
+    .called-number.hot {
+      border-color: #FFD700;
+      color: #071647;
+      background: linear-gradient(180deg, #FFE95C, #FFB000);
+      box-shadow: 0 0 18px rgba(255,215,0,.62);
+    }
+    .board-housing {
+      border-color: #00D2FF;
+      background: linear-gradient(180deg, #0B2977, #071647);
+      box-shadow:
+        inset 0 0 25px rgba(0,210,255,.18),
+        0 0 22px rgba(0,210,255,.5);
+    }
+    .bingo-letters {
+      color: #00D2FF;
+      text-shadow: 0 0 12px rgba(0,210,255,.7);
+    }
+    .bingo-cell {
+      border-color: rgba(247,251,255,.46);
+      box-shadow: inset 0 2px 9px rgba(247,251,255,.22), 0 7px 14px rgba(2,8,40,.42);
+    }
+    .bingo-cell.marked {
+      border-color: #FFD700;
+      color: #071647;
+      background: radial-gradient(circle at 35% 25%, #FFF2A0, #FFD700 38%, #FF6600 92%);
+      box-shadow: 0 0 15px #FFD700, 0 0 28px rgba(255,102,0,.68);
+    }
+    .control-panel {
+      border-color: rgba(230,0,92,.5);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(230,0,92,.18), transparent 18rem),
+        linear-gradient(160deg, rgba(10,28,92,.96), rgba(5,16,61,.98));
+    }
+    .progress-fill {
+      background: linear-gradient(90deg, #00D2FF, #FFD700 48%, #FF6600 73%, #E6005C);
+      box-shadow: 0 0 18px rgba(255,215,0,.64);
+    }
+    .feature-list li i {
+      color: #071647;
+      background: linear-gradient(180deg, #FFD700, #C69136);
+      box-shadow: 0 0 14px rgba(255,215,0,.38);
+    }
+    .cta-primary {
+      border-color: #FFD700;
+      color: #071647;
+      background: linear-gradient(180deg, #FFD700, #FF8A00 55%, #FF6600);
+      box-shadow:
+        inset 0 2px 0 rgba(247,251,255,.54),
+        0 0 14px rgba(255,215,0,.62),
+        0 0 30px rgba(255,102,0,.44);
+    }
+    .cta-primary:hover {
+      box-shadow: 0 0 20px #FFD700, 0 0 42px rgba(255,102,0,.6);
+    }
+    .cta-secondary {
+      border-color: #00D2FF;
+      background: linear-gradient(180deg, #0A4C9C, #0A1C5C);
+      box-shadow: 0 0 18px rgba(0,210,255,.28);
+    }
+    .winner-section {
+      background:
+        radial-gradient(circle at 18% 35%, rgba(255,215,0,.13), transparent 25rem),
+        radial-gradient(circle at 88% 28%, rgba(230,0,92,.12), transparent 26rem),
+        linear-gradient(180deg, #071647, #0A1C5C 52%, #061341);
+    }
+    .winner-copy h2 span {
+      color: #FFD700;
+      text-shadow: 0 0 18px rgba(255,215,0,.42);
+    }
+    .winner-flow li {
+      border-color: rgba(0,210,255,.34);
+      background: rgba(10,28,92,.78);
+    }
+    .winner-flow li::before {
+      color: #071647;
+      background: linear-gradient(180deg, #FFD700, #FF6600);
+      box-shadow: 0 0 15px rgba(255,215,0,.48);
+    }
+    .winner-visual {
+      border-color: rgba(0,210,255,.82);
+      background:
+        radial-gradient(circle at 20% 40%, rgba(255,215,0,.17), transparent 22rem),
+        linear-gradient(150deg, rgba(10,28,92,.98), rgba(5,16,61,.98));
+      box-shadow: 0 0 30px rgba(0,210,255,.34), 0 32px 80px rgba(2,8,40,.68);
+    }
+    .trophy-seal,
+    .winner-coin {
+      color: #071647;
+      background: radial-gradient(circle at 32% 26%, #FFF3A8, #FFD700 44%, #C69136 100%);
+      box-shadow: 0 0 18px rgba(255,215,0,.7);
+    }
+    .recent-winners-panel {
+      border-color: rgba(198,145,54,.62);
+      background: linear-gradient(180deg, rgba(7,22,71,.96), rgba(4,13,50,.98));
+    }
+    .recent-winner {
+      background: linear-gradient(90deg, rgba(10,45,119,.95), rgba(10,28,92,.88));
+    }
+    .winner-amount {
+      color: #43F0B0;
+      text-shadow: 0 0 12px rgba(67,240,176,.44);
+    }
+    .live-section {
+      background:
+        radial-gradient(circle at 50% 0, rgba(0,210,255,.12), transparent 30rem),
+        #061341;
+    }
+    .live-card {
+      border-color: rgba(0,210,255,.34);
+      background: linear-gradient(150deg, rgba(10,28,92,.94), rgba(5,16,61,.98));
+    }
+    .live-card.facebook:hover {
+      border-color: #00D2FF;
+      box-shadow: 0 0 28px rgba(0,210,255,.34);
+    }
+    .live-card.youtube:hover {
+      border-color: #E6005C;
+      box-shadow: 0 0 28px rgba(230,0,92,.34);
+    }
+    .closing {
+      background:
+        radial-gradient(circle at 50% 50%, rgba(255,102,0,.18), transparent 30rem),
+        linear-gradient(180deg, #0A1C5C, #071647);
+    }
+    footer {
+      border-top-color: rgba(0,210,255,.24);
+      background: #040D32;
+    }
+    @media (max-width: 700px) {
+      main {
+        z-index: auto;
+      }
+      #matter-background {
+        z-index: 2;
+        opacity: .4;
+      }
+      .exact-stage {
+        display: block;
+      }
+      .hero {
+        display: none !important;
+      }
+    }
+    @media (max-width: 420px) {
+      .exact-stage {
+        height: 110px;
+        aspect-ratio: auto;
+      }
+      .exact-stage-art {
+        width: auto;
+        height: 307.5px;
+        transform: translate(-50%, -8.510638%);
+      }
+      .exact-stage-play {
+        display: none;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      #matter-background {
+        opacity: .84;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="./play-panel-section.css?v=4">
+</head>
+<body>
+  <canvas id="matter-background" aria-hidden="true"></canvas>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="#inicio" aria-label="GANO+1 Inicio">
+        <span class="brand-domain">Gano+1.org</span>
+        <span class="brand-logo">GANO+1</span>
+      </a>
+
+      <button class="menu-button" id="menu-button" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú">
+        <span aria-hidden="true">☰</span>
+      </button>
+
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="#inicio" aria-current="page">Inicio</a>
+        <a class="nav-link" href="./como-jugar.html">Cómo jugar</a>
+        <a class="nav-link" href="#carton">Cartón estrella</a>
+        <a class="nav-link" href="#ganadores">Ganadores</a>
+        <a class="nav-link" href="./gran-tombola.html">Gran Tómbola</a>
+      </div>
+
+      <div class="socials" aria-label="Redes sociales">
+        <a class="social" href="https://www.facebook.com/profile.php?id=61592528286580" target="_blank" rel="noopener noreferrer" aria-label="Facebook de GANO+1">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8.5V6.8c0-.8.5-1 1-1h2.7V2.1L14.6 2C11.5 2 10 3.9 10 6.4v2.1H7v4h3V22h4v-9.5h3.3l.5-4H14Z"/></svg>
+        </a>
+        <a class="social" href="https://www.tiktok.com/@rociololis0" target="_blank" rel="noopener noreferrer" aria-label="TikTok de GANO+1">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M16.6 3c.4 2.4 1.8 3.8 4.4 4v3.1a10 10 0 0 1-4.4-1v6.2A6.7 6.7 0 1 1 10.8 8.7v3.4a3.6 3.6 0 1 0 2.6 3.5V3h3.2Z"/></svg>
+        </a>
+        <a class="social" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31 31 0 0 0 .5 12c0 1.6.2 3.2.5 4.8a3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1c.3-1.6.5-3.2.5-4.8s-.2-3.2-.5-4.8ZM9.7 15.4V8.6L15.8 12l-6.1 3.4Z"/></svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="exact-stage" id="inicio" aria-label="Portada oficial de GANO+1">
+      <img
+        class="exact-stage-art"
+        src="./assets/gano-plus-landing-exact.png"
+        alt=""
+        width="1380"
+        height="752"
+        draggable="false"
+      >
+      <button class="exact-stage-play" id="exact-stage-play" type="button" aria-label="Abrir el espacio para el video principal">Video principal</button>
+      <a class="exact-stage-carton" href="#carton" aria-label="Probar el cartón electrónico interactivo"></a>
+      <a class="exact-stage-winners" href="#ganadores" aria-label="Ver la sección de ganadores"></a>
+      <a class="exact-stage-info" href="./como-jugar.html">Ver cómo funciona</a>
+      <span class="exact-stage-info-copy">Página informativa · sin registro</span>
+      <p class="sr-only">GANO+1: juego de destreza con cartón electrónico, partidas en directo y premios verificados.</p>
+    </section>
+
+    <section class="game-countdown" id="proximo-juego" aria-labelledby="countdown-title">
+      <div class="countdown-console" id="game-countdown" data-state="loading">
+        <h2 id="countdown-title">PRÓXIMO JUEGO EN VIVO:</h2>
+        <div class="countdown-units" role="timer" aria-live="off" aria-label="Tiempo restante para el próximo juego">
+          <div class="countdown-unit"><strong class="countdown-value" data-countdown="days">00</strong><span class="countdown-label">DÍAS</span></div>
+          <div class="countdown-unit"><strong class="countdown-value" data-countdown="hours">00</strong><span class="countdown-label">HORAS</span></div>
+          <div class="countdown-unit"><strong class="countdown-value" data-countdown="minutes">00</strong><span class="countdown-label">MINUTOS</span></div>
+          <div class="countdown-unit"><strong class="countdown-value" data-countdown="seconds">00</strong><span class="countdown-label">SEGUNDOS</span></div>
+        </div>
+        <p class="countdown-date" id="countdown-date" role="status">Consultando el próximo juego…</p>
+      </div>
+    </section>
+
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow"><i class="live-dot"></i> La emoción original, ahora en movimiento</span>
+          <h1 class="hero-logo" aria-label="GANO más uno">
+            <span class="hero-logo-word">GAN</span><span class="hero-logo-ball">1</span><span class="hero-logo-tail">+1</span>
+          </h1>
+          <strong class="hero-tagline">¡El juego de destreza donde tú decides!</strong>
+          <p>Sigue la partida en Facebook o YouTube y siente cómo tu cartón electrónico se ilumina con cada número.</p>
+          <div class="hero-actions">
+            <a class="cta-primary" href="#carton">Probar el cartón <span aria-hidden="true">→</span></a>
+            <a class="cta-secondary" href="./como-jugar.html">Ver cómo funciona</a>
+          </div>
+          <ul class="micro-trust" aria-label="Características principales">
+            <li>Sin registro</li>
+            <li>Partidas explicadas paso a paso</li>
+            <li>Directos en redes</li>
+          </ul>
+        </div>
+
+        <article class="video-card" aria-label="Espacio reservado para video">
+          <div class="video-shell">
+            <span class="video-badge">EN DIRECTO</span>
+            <span class="orbit-ball orbit-one" aria-hidden="true">6</span>
+            <span class="orbit-ball orbit-two" aria-hidden="true">8</span>
+            <span class="orbit-ball orbit-three" aria-hidden="true">10</span>
+            <span class="orbit-ball orbit-four" aria-hidden="true">4</span>
+            <div class="video-placeholder">
+              <button class="play-button" id="play-placeholder" type="button" aria-label="Reproducir video de presentación">
+                <span class="video-ball-number" aria-hidden="true">1</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7L8 5Z"/></svg>
+              </button>
+              <strong>Tu video principal vive aquí</strong>
+              <span>Espacio 16:9 listo para integrar la transmisión o video promocional.</span>
+            </div>
+            <div class="platform-chips" aria-label="Plataformas de transmisión">
+              <span class="platform-chip">Facebook Live</span>
+              <span class="platform-chip">YouTube Live</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="star-product" id="carton">
+      <div class="play-atmosphere" aria-hidden="true">
+        <i style="--x:5%;--y:8%;--s:34px;--c:#ff6600"></i>
+        <i style="--x:15%;--y:4%;--s:26px;--c:#e600b8"></i>
+        <i style="--x:24%;--y:9%;--s:38px;--c:#00d2ff"></i>
+        <i style="--x:71%;--y:5%;--s:32px;--c:#00d2ff"></i>
+        <i style="--x:82%;--y:11%;--s:30px;--c:#ffd700"></i>
+        <i style="--x:94%;--y:7%;--s:27px;--c:#ff6600"></i>
+        <i style="--x:8%;--y:38%;--s:31px;--c:#29f38a"></i>
+        <i style="--x:18%;--y:29%;--s:24px;--c:#ff3cac"></i>
+        <i style="--x:88%;--y:34%;--s:36px;--c:#00d2ff"></i>
+        <i style="--x:97%;--y:43%;--s:28px;--c:#ffd700"></i>
+        <i style="--x:3%;--y:69%;--s:35px;--c:#00d2ff"></i>
+        <i style="--x:12%;--y:78%;--s:28px;--c:#ff6600"></i>
+        <i style="--x:88%;--y:73%;--s:30px;--c:#29f38a"></i>
+        <i style="--x:96%;--y:84%;--s:40px;--c:#e600b8"></i>
+
+        <span class="scene-ball scene-ball-25-a" data-letter="I">25</span>
+        <span class="scene-ball scene-ball-12" data-letter="B">12</span>
+        <span class="scene-ball scene-ball-13" data-letter="B">13</span>
+        <span class="scene-ball scene-ball-15" data-letter="B">15</span>
+        <span class="scene-ball scene-ball-11" data-letter="B">11</span>
+        <span class="scene-ball scene-ball-25-b" data-letter="I">25</span>
+        <span class="scene-ball scene-ball-51" data-letter="G">51</span>
+        <span class="scene-ball scene-ball-67" data-letter="O">67</span>
+
+        <img class="scene-dauber scene-dauber-left" src="./assets/bingo-dauber-3d.png" alt="" decoding="async">
+        <img class="scene-dauber scene-dauber-right" src="./assets/bingo-dauber-3d.png" alt="" decoding="async">
+
+        <span class="play-confetti confetti-a"></span>
+        <span class="play-confetti confetti-b"></span>
+        <span class="play-confetti confetti-c"></span>
+        <span class="play-confetti confetti-d"></span>
+        <span class="play-confetti confetti-e"></span>
+        <span class="play-confetti confetti-f"></span>
+      </div>
+
+      <div class="container">
+        <header class="section-heading">
+          <h2>No es un cartón.<span class="gradient-text">Es tu panel de juego.</span></h2>
+          <p>Una experiencia electrónica que convierte cada número en luz, progreso y anticipación. Marca cinco casillas y siente el momento.</p>
+        </header>
+
+        <article class="electronic-console" id="interactive-console">
+          <span class="cabinet-light cabinet-light-top" aria-hidden="true"></span>
+          <span class="cabinet-light cabinet-light-bottom" aria-hidden="true"></span>
+          <span class="cabinet-light cabinet-light-left" aria-hidden="true"></span>
+          <span class="cabinet-light cabinet-light-right" aria-hidden="true"></span>
+          <div class="console-top">
+            <div class="console-title">
+              <span>GANO+1 Electronic Play System</span>
+              <h3>Cartón de sincronía en vivo</h3>
+            </div>
+            <div class="signal"><i></i><span>Señal activa</span></div>
+          </div>
+
+          <div class="console-grid">
+            <div class="board-stage">
+              <div class="called-strip" aria-label="Últimos números anunciados">
+                <span class="called-number">B · 12</span>
+                <span class="called-number">I · 24</span>
+                <span class="called-number hot">N · 39</span>
+                <span class="called-number">G · 54</span>
+                <span class="called-number">O · 68</span>
+              </div>
+              <div class="board-housing">
+                <div class="bingo-letters" aria-hidden="true"><span>B</span><span>I</span><span>N</span><span>G</span><span>O</span></div>
+                <div class="bingo-board" id="bingo-board" aria-label="Cartón electrónico interactivo"></div>
+              </div>
+              <p class="board-caption">Toca cualquier número para iluminarlo. La estrella central ya cuenta.</p>
+            </div>
+
+            <aside class="control-panel">
+              <div>
+                <span class="control-label">Tu misión</span>
+                <h4>Completa una línea de 5</h4>
+                <p>Empieza con un toque. Cada luz encendida te acerca a la celebración.</p>
+              </div>
+              <div class="progress-card">
+                <div class="progress-top"><span>Progreso del patrón</span><strong id="progress-copy">1 de 5</strong></div>
+                <div class="progress-track" role="progressbar" aria-label="Progreso del cartón" aria-valuemin="0" aria-valuemax="5" aria-valuenow="1">
+                  <div class="progress-fill" id="progress-fill"></div>
+                </div>
+              </div>
+              <ul class="feature-list">
+                <li><i aria-hidden="true">⚡</i><span>Respuesta visual instantánea</span></li>
+                <li><i aria-hidden="true">◎</i><span>Sigue cada llamada sin perder el ritmo</span></li>
+                <li><i aria-hidden="true">★</i><span>Un final diseñado para celebrar</span></li>
+              </ul>
+              <a class="cta-primary" href="https://wa.me/?text=Hola%20GANO%2B1%2C%20quiero%20saber%20c%C3%B3mo%20participar." target="_blank" rel="noopener">Quiero información <span aria-hidden="true">→</span></a>
+            </aside>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="integrated-winner-section" id="ganadores" aria-labelledby="celebrationTitle">
+      <div class="winner-scene" id="winnerScene">
+        <div class="grid-horizon" aria-hidden="true"></div>
+        <div class="grid-floor" aria-hidden="true"></div>
+        <div class="center-beam" aria-hidden="true"></div>
+
+        <div class="corner-rings corner-rings-left" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </div>
+        <div class="corner-rings corner-rings-right" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </div>
+
+        <span class="number-orb orb-12-left" aria-hidden="true">12</span>
+        <span class="number-orb orb-1" aria-hidden="true">1</span>
+        <span class="number-orb orb-38" aria-hidden="true">38</span>
+        <span class="number-orb orb-51" aria-hidden="true">51</span>
+        <span class="number-orb orb-12-bottom" aria-hidden="true">12</span>
+        <span class="number-orb orb-74" aria-hidden="true">74</span>
+        <span class="number-orb orb-6" aria-hidden="true">6</span>
+
+        <div class="story-panel">
+          <p class="kicker">EL MOMENTO QUE TODOS ESPERAN</p>
+          <h2 id="celebrationTitle">La jugada<br>termina. La<br>celebración<br>comienza.</h2>
+          <p class="intro">
+            El área ganadora transforma el resultado en el pico emocional
+            de la experiencia: luz, reconocimiento y transparencia en un
+            solo momento.
+          </p>
+
+          <ol class="journey" aria-label="Pasos para participar">
+            <li>
+              <button class="journey-step step-green" type="button" data-step="1" aria-pressed="false">
+                <span class="step-number">1</span>
+                <span>Haz clic en Empezar a Jugar</span>
+              </button>
+            </li>
+            <li>
+              <button class="journey-step step-cyan" type="button" data-step="2" aria-pressed="false">
+                <span class="step-number">2</span>
+                <span>Deja tus datos y el número de tablas que deseas adquirir</span>
+              </button>
+            </li>
+            <li>
+              <button class="journey-step step-pink" type="button" data-step="3" aria-pressed="false">
+                <span class="step-number">3</span>
+                <span>Escanea el código QR para que descubras tus tablas</span>
+              </button>
+            </li>
+            <li>
+              <button class="journey-step step-fuchsia" type="button" data-step="4" aria-pressed="false">
+                <span class="step-number">4</span>
+                <span>Sigue el live de Facebook para que no te pierdas el juego</span>
+              </button>
+            </li>
+            <li class="journey-wide">
+              <button class="journey-step step-orange" type="button" data-step="5" aria-pressed="false">
+                <span class="step-number">5</span>
+                <span>Comparte el live y participa por un premio al final del juego</span>
+              </button>
+            </li>
+          </ol>
+
+          <a
+            class="start-button"
+            id="startButton"
+            href="https://wa.me/?text=Hola%20GANO%2B1%2C%20quiero%20empezar%20a%20jugar%20y%20recibir%20informaci%C3%B3n."
+            target="_blank"
+            rel="noopener"
+            aria-label="Empezar a jugar por WhatsApp"
+          >
+            <span>Empezar a Jugar</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <p class="status-message" id="statusMessage" role="status" aria-live="polite"></p>
+        </div>
+
+        <div class="machine-zone" aria-label="Muro oficial de celebración">
+          <div class="decor-card decor-card-left" aria-hidden="true">
+            <div class="decor-title">B I N G O</div>
+            <div class="decor-grid">
+              <span>1</span><span>25</span><span>38</span><span>57</span><span>72</span>
+              <span>10</span><span>39</span><span>48</span><span>62</span><span>73</span>
+              <span>8</span><span>20</span><span>★</span><span>59</span><span>75</span>
+              <span>7</span><span>24</span><span>41</span><span>55</span><span>68</span>
+            </div>
+          </div>
+
+          <div class="decor-card decor-card-right" aria-hidden="true">
+            <div class="decor-title">B I N G O</div>
+            <div class="decor-grid">
+              <span>5</span><span>22</span><span>38</span><span>57</span><span>77</span>
+              <span>9</span><span>29</span><span>45</span><span>62</span><span>71</span>
+              <span>3</span><span>18</span><span>★</span><span>69</span><span>74</span>
+              <span>12</span><span>27</span><span>44</span><span>59</span><span>73</span>
+            </div>
+          </div>
+
+          <article class="winner-machine">
+            <div class="machine-cap cap-left" aria-hidden="true"></div>
+            <div class="machine-cap cap-right" aria-hidden="true"></div>
+            <div class="machine-inner">
+              <section class="winner-identity">
+                <div class="trophy-wrap" aria-hidden="true">
+                  <span class="trophy-halo"></span>
+                  <svg class="trophy" viewBox="0 0 220 210">
+                    <defs>
+                      <linearGradient id="integratedCupGold" x1="0" x2="1">
+                        <stop offset="0" stop-color="#7c6400"/>
+                        <stop offset=".22" stop-color="#fff46d"/>
+                        <stop offset=".48" stop-color="#ffb400"/>
+                        <stop offset=".72" stop-color="#34f15d"/>
+                        <stop offset="1" stop-color="#7c4a00"/>
+                      </linearGradient>
+                      <linearGradient id="integratedStemGold" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0" stop-color="#ffffa5"/>
+                        <stop offset=".5" stop-color="#d79800"/>
+                        <stop offset="1" stop-color="#54e94d"/>
+                      </linearGradient>
+                      <radialGradient id="integratedBaseGold">
+                        <stop offset="0" stop-color="#ffe757"/>
+                        <stop offset=".72" stop-color="#a65f00"/>
+                        <stop offset="1" stop-color="#382500"/>
+                      </radialGradient>
+                    </defs>
+                    <path d="M48 38h124c-2 63-19 92-47 103H95C67 130 50 101 48 38Z" fill="url(#integratedCupGold)" stroke="#fff06a" stroke-width="4"/>
+                    <path d="M48 50H29c-18 0-18 45 3 61 10 8 25 10 39 2" fill="none" stroke="url(#integratedCupGold)" stroke-width="8"/>
+                    <path d="M172 50h19c18 0 18 45-3 61-10 8-25 10-39 2" fill="none" stroke="url(#integratedCupGold)" stroke-width="8"/>
+                    <path d="M95 140h30v27H95Z" fill="url(#integratedStemGold)"/>
+                    <path d="M79 165h62l13 19H66Z" fill="url(#integratedBaseGold)" stroke="#ffd700" stroke-width="3"/>
+                    <ellipse cx="110" cy="38" rx="62" ry="12" fill="#f8d437" stroke="#fff070" stroke-width="4"/>
+                    <ellipse cx="110" cy="40" rx="52" ry="7" fill="#3e3100"/>
+                    <path d="M68 48c8 43 18 66 37 82" fill="none" stroke="rgba(247,251,255,.55)" stroke-width="7" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <p class="wall-label">MURO OFICIAL DE<br>CELEBRACIÓN</p>
+                <h2>Ganador/a<br>GANO+1</h2>
+                <strong>Aquí brillan los<br>resultados reales</strong>
+                <p class="winner-note">Este espacio mostrará nombre, premio y fecha únicamente cuando el resultado haya sido verificado.</p>
+                <span class="verified"><i></i> Publicación con resultado verificado</span>
+              </section>
+
+              <section class="leaderboard" aria-labelledby="leaderboardTitle">
+                <header>
+                  <h3 id="leaderboardTitle">Últimos ganadores <span>GANO+1</span></h3>
+                  <i aria-hidden="true"></i>
+                </header>
+                <ol>
+                  <li>
+                    <span class="rank crown gold" aria-label="Primer lugar">♛</span>
+                    <span class="avatar avatar-blue" aria-hidden="true">JP</span>
+                    <strong>Juan P.</strong>
+                    <b>$500</b>
+                  </li>
+                  <li>
+                    <span class="rank crown silver" aria-label="Segundo lugar">♛</span>
+                    <span class="avatar avatar-red" aria-hidden="true">ER</span>
+                    <strong>Elena R.</strong>
+                    <b>$250</b>
+                  </li>
+                  <li>
+                    <span class="rank crown bronze" aria-label="Tercer lugar">♛</span>
+                    <span class="avatar avatar-purple" aria-hidden="true">IB</span>
+                    <strong>Iasia B.</strong>
+                    <b>$200</b>
+                  </li>
+                  <li>
+                    <span class="rank">4</span>
+                    <span class="avatar avatar-green" aria-hidden="true">JP</span>
+                    <strong>Juan P.</strong>
+                    <b>$100</b>
+                  </li>
+                  <li>
+                    <span class="rank">5</span>
+                    <span class="avatar avatar-orange" aria-hidden="true">EA</span>
+                    <strong>Elena A.</strong>
+                    <b>$150</b>
+                  </li>
+                </ol>
+                <p>Publicar y actualizar únicamente con resultados verificados por la organización.</p>
+              </section>
+            </div>
+          </article>
+
+          <div class="reward-icons" aria-hidden="true">
+            <span>☆</span><span>♬</span><span>⚄</span><span>☆</span>
+          </div>
+          <p class="win-marquee" aria-label="Hoy vas a ganar">¡HOY VAS A GANAR!</p>
+        </div>
+
+        <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section class="winner-section" id="ganadores-anterior" hidden aria-hidden="true">
+      <div class="container winner-layout">
+        <div class="winner-copy">
+          <span class="eyebrow">El momento que todos esperan</span>
+          <h2>La jugada termina. <span>La celebración comienza.</span></h2>
+          <p>El área ganadora transforma el resultado en el pico emocional de la experiencia: luz, reconocimiento y transparencia en un solo momento.</p>
+          <ol class="winner-flow">
+            <li>Sigue cada número durante la transmisión en directo.</li>
+            <li>Completa el patrón marcado en tu cartón electrónico.</li>
+            <li>Verifica el resultado antes de publicar la celebración.</li>
+          </ol>
+          <a class="cta-primary" href="./como-jugar.html">Conocer la dinámica <span aria-hidden="true">→</span></a>
+        </div>
+
+        <article class="winner-visual" aria-label="Área para presentar ganadores verificados">
+          <span class="winner-coin one" aria-hidden="true">$</span>
+          <span class="winner-coin two" aria-hidden="true">G</span>
+          <span class="winner-coin three" aria-hidden="true">$</span>
+          <span class="winner-coin four" aria-hidden="true">G</span>
+          <div class="winner-podium">
+            <span class="trophy-seal" aria-hidden="true">
+              <svg viewBox="0 0 64 64"><path d="M48 8H16v8H6v8c0 9.3 6.9 17 15.9 18.3A17 17 0 0 0 28 47v5H17v6h30v-6H36v-5a17 17 0 0 0 6.1-4.7C51.1 41 58 33.3 58 24v-8H48V8ZM12 24v-2h4.2c.3 4.8 1.8 9.3 4.3 13A11.9 11.9 0 0 1 12 24Zm40 0a11.9 11.9 0 0 1-8.5 11c2.5-3.7 4-8.2 4.3-13H52v2Z"/></svg>
+            </span>
+            <small>Muro oficial de celebración</small>
+            <h3>Ganador/a GANO+1</h3>
+            <strong>Aquí brillan los resultados reales</strong>
+            <p>Este espacio mostrará nombre, premio y fecha únicamente cuando el resultado haya sido verificado.</p>
+            <span class="verification-badge"><i></i> Publicación con resultado verificado</span>
+          </div>
+
+          <aside class="recent-winners-panel" aria-label="Últimos ganadores GANO+1">
+            <div class="recent-winners-title">
+              <h4>Últimos ganadores <span>GANO+1</span></h4>
+              <i aria-hidden="true"></i>
+            </div>
+            <ol class="recent-winners-list">
+              <li class="recent-winner">
+                <span class="winner-rank crown gold" aria-label="Primer lugar">♛</span>
+                <span class="winner-avatar" aria-hidden="true">JP</span>
+                <span class="winner-person">Juan P.</span>
+                <strong class="winner-amount">$500</strong>
+              </li>
+              <li class="recent-winner">
+                <span class="winner-rank crown silver" aria-label="Segundo lugar">♛</span>
+                <span class="winner-avatar" aria-hidden="true">ER</span>
+                <span class="winner-person">Elena R.</span>
+                <strong class="winner-amount">$250</strong>
+              </li>
+              <li class="recent-winner">
+                <span class="winner-rank crown bronze" aria-label="Tercer lugar">♛</span>
+                <span class="winner-avatar" aria-hidden="true">IB</span>
+                <span class="winner-person">Iasia B.</span>
+                <strong class="winner-amount">$200</strong>
+              </li>
+              <li class="recent-winner">
+                <span class="winner-rank" aria-label="Cuarto lugar">4</span>
+                <span class="winner-avatar" aria-hidden="true">JP</span>
+                <span class="winner-person">Juan P.</span>
+                <strong class="winner-amount">$100</strong>
+              </li>
+              <li class="recent-winner">
+                <span class="winner-rank" aria-label="Quinto lugar">5</span>
+                <span class="winner-avatar" aria-hidden="true">EA</span>
+                <span class="winner-person">Elena A.</span>
+                <strong class="winner-amount">$150</strong>
+              </li>
+            </ol>
+            <p class="recent-winners-note">Publicar y actualizar únicamente con resultados verificados por la organización.</p>
+          </aside>
+        </article>
+      </div>
+    </section>
+
+    <section class="directos-section" id="directos" aria-labelledby="directosTitle">
+      <div class="directos-ceiling" aria-hidden="true"></div>
+      <div class="directos-floor" aria-hidden="true"></div>
+      <span class="live-corner-ring top" aria-hidden="true"></span>
+      <span class="live-corner-ring bottom" aria-hidden="true"></span>
+
+      <header class="directos-heading">
+        <p class="directos-kicker">Donde ocurre la emoción</p>
+        <h2 id="directosTitle">Nos vemos en directo.</h2>
+        <p>Sigue las llamadas, comparte la energía y acompaña cada partida desde tu plataforma favorita.</p>
+      </header>
+
+      <div class="directos-platforms">
+        <article class="channel-stage facebook-stage">
+          <div class="facebook-bingo" aria-hidden="true">
+            <strong>B I N G O</strong>
+            <div class="facebook-bingo-grid">
+              <span>12</span><span>24</span><span>38</span><span>57</span><span>67</span>
+              <span>5</span><span>27</span><span>41</span><span>59</span><span>72</span>
+              <span>8</span><span>20</span><span>★</span><span>51</span><span>69</span>
+              <span>10</span><span>25</span><span>39</span><span>58</span><span>74</span>
+            </div>
+          </div>
+
+          <div class="channel-content">
+            <span class="channel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M14 8.5V6.8c0-.8.5-1 1-1h2.7V2.1L14.6 2C11.5 2 10 3.9 10 6.4v2.1H7v4h3V22h4v-9.5h3.3l.5-4H14Z"/></svg>
+            </span>
+            <h3>Página de Facebook</h3>
+            <p>Únete a la comunidad, comparte tus jugadas e infórmate de todas nuestras actividades.</p>
+            <a
+              class="channel-cta"
+              href="https://www.facebook.com/profile.php?id=61592528286580"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir la página informativa de GANO+1 en Facebook"
+            >
+              Ir a Facebook <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </article>
+
+        <article class="channel-stage tiktok-stage">
+          <span class="live-number-orb" aria-hidden="true">77</span>
+          <div class="channel-content">
+            <span class="channel-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M16.6 2c.35 2.13 1.55 3.4 3.6 3.8v3.17a8.8 8.8 0 0 1-3.56-.82v6.45a7.04 7.04 0 1 1-6.08-6.98v3.24a3.86 3.86 0 1 0 2.84 3.74V2h3.2Z"/></svg>
+            </span>
+            <h3>TikTok Live</h3>
+            <p>Disfruta de nuestros mejores directos cortos y participa en los desafíos más virales.</p>
+            <a
+              class="channel-cta"
+              href="https://www.tiktok.com/@rociololis0"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Abrir el perfil de GANO+1 en TikTok"
+            >
+              Ir a TikTok <span aria-hidden="true">→</span>
+            </a>
+          </div>
+          <div class="live-dice" aria-hidden="true">
+            <span class="live-die"></span>
+            <span class="live-die"></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="next-play-section" id="contacto" aria-labelledby="nextPlayTitle">
+      <article class="next-play-card">
+        <div class="rendered-ball-frame" aria-hidden="true">
+          <img class="frame-edge frame-top" src="./assets/closing-bingo-frame-top.png" alt="" decoding="async">
+          <img class="frame-edge frame-bottom" src="./assets/closing-bingo-frame-bottom.png" alt="" decoding="async">
+          <img class="frame-edge frame-left" src="./assets/closing-bingo-frame-left.png" alt="" decoding="async">
+          <img class="frame-edge frame-right" src="./assets/closing-bingo-frame-right.png" alt="" decoding="async">
+        </div>
+
+        <div class="closing-board left" aria-hidden="true"></div>
+        <div class="closing-board right" aria-hidden="true"></div>
+
+        <div class="next-play-content">
+          <p class="next-play-kicker">Tu próxima jugada empieza aquí</p>
+          <h2 id="nextPlayTitle">Conoce la experiencia completa de <span>GANO+1.</span></h2>
+          <p class="next-play-description">Solicita información sobre la dinámica, próximas transmisiones y formas de participación. Sin formularios ni registro.</p>
+          <a
+            class="next-play-cta"
+            href="https://wa.me/?text=Hola%20GANO%2B1%2C%20quiero%20recibir%20informaci%C3%B3n%20para%20empezar%20a%20jugar."
+            target="_blank"
+            rel="noopener"
+            aria-label="Hablar con GANO+1 por WhatsApp"
+          >
+            Hablar con GANO+1 <span aria-hidden="true">→</span>
+          </a>
+        </div>
+
+        <div class="dauber dauber-left" aria-hidden="true">
+          <img src="./assets/bingo-dauber-3d.png" alt="" decoding="async">
+        </div>
+        <div class="dauber dauber-right" aria-hidden="true">
+          <img src="./assets/bingo-dauber-3d.png" alt="" decoding="async">
+        </div>
+
+        <span class="floating-ball ball-12" data-letter="B" aria-hidden="true">12</span>
+        <span class="floating-ball ball-25" data-letter="I" aria-hidden="true">25</span>
+        <span class="floating-ball ball-38" data-letter="N" aria-hidden="true">38</span>
+        <span class="floating-ball ball-51" data-letter="G" aria-hidden="true">51</span>
+        <span class="floating-ball ball-67" data-letter="O" aria-hidden="true">67</span>
+
+        <div class="closing-confetti" aria-hidden="true">
+          <i style="--x:7%;--y:25%;--r:28deg"></i>
+          <i style="--x:12%;--y:37%;--r:-36deg"></i>
+          <i style="--x:18%;--y:19%;--r:72deg"></i>
+          <i style="--x:23%;--y:31%;--r:14deg"></i>
+          <i style="--x:29%;--y:16%;--r:-18deg"></i>
+          <i style="--x:34%;--y:28%;--r:55deg"></i>
+          <i style="--x:40%;--y:13%;--r:-24deg"></i>
+          <i style="--x:45%;--y:24%;--r:68deg"></i>
+          <i style="--x:51%;--y:12%;--r:9deg"></i>
+          <i style="--x:57%;--y:27%;--r:-48deg"></i>
+          <i style="--x:62%;--y:16%;--r:37deg"></i>
+          <i style="--x:68%;--y:31%;--r:-12deg"></i>
+          <i style="--x:73%;--y:18%;--r:63deg"></i>
+          <i style="--x:79%;--y:27%;--r:-32deg"></i>
+          <i style="--x:84%;--y:14%;--r:21deg"></i>
+          <i style="--x:89%;--y:36%;--r:76deg"></i>
+          <i style="--x:93%;--y:22%;--r:-20deg"></i>
+          <i style="--x:16%;--y:49%;--r:44deg"></i>
+          <i style="--x:82%;--y:51%;--r:-42deg"></i>
+          <i style="--x:76%;--y:42%;--r:18deg"></i>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <span>© 2026 GANO+1. Todos los derechos reservados.</span>
+      <span>Juega con responsabilidad · Solo para mayores de edad</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="./node_modules/matter-js/build/matter.min.js"></script>
+  <script src="./home-matter-background.js?v=2"></script>
+  <script>
+    const cells = [5, 18, 39, 56, 67, 10, 20, 34, 68, 72, 8, 26, "★", 47, 66, 14, 23, 35, 57, 65, 2, 29, 41, 59, 70];
+    const board = document.querySelector("#bingo-board");
+    const progressCopy = document.querySelector("#progress-copy");
+    const progressFill = document.querySelector("#progress-fill");
+    const progressTrack = document.querySelector(".progress-track");
+    const interactiveConsole = document.querySelector("#interactive-console");
+    const calledNumbers = [...document.querySelectorAll(".called-number")];
+    const bingoLetters = ["B", "I", "N", "G", "O"];
+    let celebrated = false;
+
+    board.innerHTML = cells.map((cell, index) => `
+      <button type="button" class="bingo-cell${index === 12 ? " marked" : ""}"
+        aria-pressed="${index === 12}" aria-label="${index === 12 ? "Casilla estrella activa" : `Marcar número ${cell}`}">${cell}</button>
+    `).join("");
+
+    function updateProgress() {
+      const count = board.querySelectorAll(".marked").length;
+      const progress = Math.min(count, 5);
+      progressCopy.textContent = `${progress} de 5`;
+      progressFill.style.width = `${progress * 20}%`;
+      progressTrack.setAttribute("aria-valuenow", String(progress));
+      interactiveConsole.classList.toggle("is-complete", progress >= 5);
+      if (progress >= 5 && !celebrated) {
+        celebrated = true;
+        showToast("¡LÍNEA COMPLETA! Así se siente cuando todo se ilumina.");
+        launchSparks();
+      }
+      if (progress < 5) celebrated = false;
+    }
+
+    board.addEventListener("click", event => {
+      const cell = event.target.closest(".bingo-cell");
+      if (!cell) return;
+      cell.classList.toggle("marked");
+      cell.setAttribute("aria-pressed", String(cell.classList.contains("marked")));
+      const cellIndex = [...board.children].indexOf(cell);
+      const columnIndex = cellIndex % 5;
+      calledNumbers.forEach((number, index) => number.classList.toggle("hot", index === columnIndex));
+      calledNumbers[columnIndex].textContent = `${bingoLetters[columnIndex]} · ${cell.textContent.trim()}`;
+      cell.classList.remove("just-called");
+      void cell.offsetWidth;
+      cell.classList.add("just-called");
+      updateProgress();
+    });
+
+    if (window.matchMedia("(pointer: fine)").matches) {
+      let tiltFrame = 0;
+      interactiveConsole.addEventListener("pointermove", event => {
+        cancelAnimationFrame(tiltFrame);
+        tiltFrame = requestAnimationFrame(() => {
+          const bounds = interactiveConsole.getBoundingClientRect();
+          const relativeX = (event.clientX - bounds.left) / bounds.width - .5;
+          const relativeY = (event.clientY - bounds.top) / bounds.height - .5;
+          interactiveConsole.style.setProperty("--tilt-x", `${relativeY * -2.4}deg`);
+          interactiveConsole.style.setProperty("--tilt-y", `${relativeX * 3.2}deg`);
+        });
+      });
+      interactiveConsole.addEventListener("pointerleave", () => {
+        interactiveConsole.style.setProperty("--tilt-x", "0deg");
+        interactiveConsole.style.setProperty("--tilt-y", "0deg");
+      });
+    }
+
+    function launchSparks() {
+      const colors = ["#21e6ff", "#ff38a8", "#ff7b18", "#ffe15b", "#4cff9b"];
+      for (let i = 0; i < 32; i += 1) {
+        const spark = document.createElement("i");
+        spark.className = "spark";
+        spark.style.left = `${45 + Math.random() * 10}%`;
+        spark.style.top = `${48 + Math.random() * 8}%`;
+        spark.style.background = colors[i % colors.length];
+        spark.style.setProperty("--dx", `${(Math.random() - .5) * 460}px`);
+        spark.style.setProperty("--dy", `${-80 + Math.random() * 330}px`);
+        document.body.appendChild(spark);
+        setTimeout(() => spark.remove(), 1200);
+      }
+    }
+
+    const menuButton = document.querySelector("#menu-button");
+    const navLinks = document.querySelector("#nav-links");
+    menuButton.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.setAttribute("aria-label", open ? "Cerrar menú" : "Abrir menú");
+    });
+    navLinks.addEventListener("click", event => {
+      if (!event.target.closest("a")) return;
+      navLinks.classList.remove("open");
+      menuButton.setAttribute("aria-expanded", "false");
+    });
+
+    document.querySelector("#play-placeholder").addEventListener("click", () => {
+      showToast("Este espacio está listo para integrar tu video o transmisión.");
+    });
+    document.querySelector("#exact-stage-play").addEventListener("click", () => {
+      showToast("La bola principal está lista para abrir tu video o transmisión.");
+    });
+
+    let toastTimer;
+    function showToast(message) {
+      const toast = document.querySelector("#toast");
+      toast.textContent = message;
+      toast.classList.add("show");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("show"), 3400);
+    }
+  </script>
+  <script src="./ganadores-replica/script.js?v=2"></script>
+  <script type="module" src="./countdown.js?v=1"></script>
+</body>
+</html>

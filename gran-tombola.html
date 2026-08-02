@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Simulador interactivo del ánfora transparente de la Gran Tómbola GANO+1.">
+  <meta name="theme-color" content="#05072b">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="color-scheme" content="dark">
+  <title>Gran Tómbola interactiva | GANO+1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="./assets/gran-tombola-hero-bg-v2.webp" as="image" type="image/webp" fetchpriority="high">
+  <link href="https://fonts.googleapis.com/css2?family=Changa:wght@500;600;700;800&family=Exo+2:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./tombola.css?v=full-stage-amphora-12">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav container" aria-label="Navegación principal">
+      <a class="brand" href="./gano-plus-landing.html" aria-label="GANO+1 Inicio">
+        <span class="brand-name">Gano+1.org</span>
+        <span class="brand-mark">GANO+1</span>
+      </a>
+      <button class="menu" id="menu" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Abrir menú">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a class="nav-link" href="./gano-plus-landing.html">Inicio</a>
+        <a class="nav-link" href="./como-jugar.html">Cómo jugar</a>
+        <a class="nav-link" href="./gano-plus-landing.html#premios">Premios</a>
+        <a class="nav-link" href="./gran-tombola.html" aria-current="page">Gran Tómbola</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero hero-integrated" id="inicio-tombola" aria-labelledby="tombola-hero-title">
+      <picture>
+        <source srcset="./assets/gran-tombola-hero-bg-v2.webp" type="image/webp">
+        <img class="hero-integrated-bg" src="./assets/gran-tombola-hero-bg-v2.png" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+      </picture>
+      <div class="hero-integrated-shade"></div>
+
+      <div class="hero-bubbles" aria-hidden="true">
+        <i></i><i></i><i></i><i></i><i></i><i></i>
+      </div>
+
+      <div class="hero-integrated-content">
+        <p class="hero-kicker"><span></span> Simulación transparente</p>
+        <h1 id="tombola-hero-title">
+          Cada ticket entra. El aire pone la emoción
+          <strong>en movimiento.</strong>
+        </h1>
+        <p class="hero-lead">Prueba el ánfora digital: agrega tickets, observa cómo se transforman en bolitas y mira la mezcla en tiempo real.</p>
+
+        <a class="hero-action" href="#simulador">
+          <span>Activar el ánfora</span>
+          <b aria-hidden="true">↓</b>
+        </a>
+        <small>Demostración interactiva · Sin registro</small>
+
+        <div class="hero-proof" aria-label="Características de la demostración">
+          <article>
+            <span class="proof-number">01</span>
+            <span class="proof-icon" aria-hidden="true">⌁</span>
+            <div><b>Entrada visible</b><small>Verifica tu boleto</small></div>
+          </article>
+          <article>
+            <span class="proof-number">02</span>
+            <span class="proof-icon proof-air" aria-hidden="true">≋</span>
+            <div><b>Mezcla por aire</b><small>Observa la agitación</small></div>
+          </article>
+          <article>
+            <span class="proof-number">03</span>
+            <span class="proof-icon proof-glass" aria-hidden="true">◯</span>
+            <div><b>Resultado transparente</b><small>Confianza total</small></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="simulator-section" id="simulador">
+      <div class="container">
+        <header class="section-heading">
+          <span class="eyebrow"><i></i> Ánfora en movimiento</span>
+          <h2>Agrega tu ticket y <span>míralo entrar.</span></h2>
+          <p>Agrega múltiples tickets sin detener la mezcla ni reiniciar la animación.</p>
+        </header>
+
+        <div class="tombola-app">
+          <div class="machine-card">
+            <div class="machine-topbar">
+              <div>
+                <span class="live-label"><i></i> Mezcla activa</span>
+                <strong>Ánfora GANO+1</strong>
+              </div>
+              <div class="counter" aria-live="polite">
+                <span id="ticket-count">0</span>
+                <small>tickets dentro</small>
+              </div>
+            </div>
+
+            <div class="machine-scene" id="machine-scene">
+              <canvas id="ball-canvas" aria-label="Bolitas de colores moviéndose dentro del ánfora"></canvas>
+
+              <svg class="amphora" viewBox="0 0 800 700" role="img" aria-labelledby="amphora-title amphora-desc">
+                <title id="amphora-title">Máquina neumática de bingo</title>
+                <desc id="amphora-desc">Cámara esférica de vidrio con base sopladora que mantiene las bolitas suspendidas.</desc>
+                <defs>
+                  <radialGradient id="glass" cx=".34" cy=".2" r=".84">
+                    <stop offset="0" stop-color="#ffffff" stop-opacity=".25"/>
+                    <stop offset=".25" stop-color="#66e5ff" stop-opacity=".09"/>
+                    <stop offset=".72" stop-color="#168cf4" stop-opacity=".05"/>
+                    <stop offset="1" stop-color="#05113f" stop-opacity=".18"/>
+                  </radialGradient>
+                  <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+                    <stop offset="0" stop-color="#591707"/>
+                    <stop offset=".18" stop-color="#ff4e12"/>
+                    <stop offset=".43" stop-color="#ffb51c"/>
+                    <stop offset=".58" stop-color="#fff175"/>
+                    <stop offset=".8" stop-color="#ff6a12"/>
+                    <stop offset="1" stop-color="#641b08"/>
+                  </linearGradient>
+                  <linearGradient id="airFlow" x1="0" y1="1" x2="0" y2="0">
+                    <stop offset="0" stop-color="#19dfff" stop-opacity=".62"/>
+                    <stop offset=".58" stop-color="#50ecff" stop-opacity=".15"/>
+                    <stop offset="1" stop-color="#b8f9ff" stop-opacity="0"/>
+                  </linearGradient>
+                  <radialGradient id="fanCore">
+                    <stop offset="0" stop-color="#fffbd1"/>
+                    <stop offset=".28" stop-color="#26deff"/>
+                    <stop offset=".62" stop-color="#1477ee"/>
+                    <stop offset="1" stop-color="#082b8e"/>
+                  </radialGradient>
+                  <clipPath id="globe-clip">
+                    <ellipse cx="400" cy="340" rx="270" ry="240"/>
+                  </clipPath>
+                  <filter id="glow">
+                    <feGaussianBlur stdDeviation="4" result="blur"/>
+                    <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+                  </filter>
+                </defs>
+
+                <!-- Cámara esférica posterior -->
+                <ellipse cx="400" cy="340" rx="270" ry="240" fill="url(#glass)"/>
+
+                <!-- Flujo continuo: sin radios ni líneas punteadas -->
+                <g class="air-system" clip-path="url(#globe-clip)" aria-hidden="true">
+                  <path class="air-column air-left" d="M360 572 C315 485 348 385 385 300 C407 250 385 190 374 142 C350 230 330 310 332 400 C334 478 346 530 360 572 Z" fill="url(#airFlow)"/>
+                  <path class="air-column air-right" d="M440 572 C485 485 452 385 415 300 C393 250 415 190 426 142 C450 230 470 310 468 400 C466 478 454 530 440 572 Z" fill="url(#airFlow)"/>
+                  <g class="air-bubbles">
+                    <circle cx="376" cy="500" r="7"/>
+                    <circle cx="421" cy="461" r="5"/>
+                    <circle cx="388" cy="412" r="8"/>
+                    <circle cx="433" cy="348" r="6"/>
+                    <circle cx="375" cy="287" r="5"/>
+                    <circle cx="414" cy="225" r="7"/>
+                  </g>
+                </g>
+
+                <!-- Boquilla inferior y ventilador neumático -->
+                <g class="blower">
+                  <path d="M347 527 H453 L480 591 H320 Z" fill="url(#metal)" stroke="#fff07b" stroke-width="5"/>
+                  <ellipse cx="400" cy="535" rx="54" ry="22" fill="#081344" stroke="#65ebff" stroke-width="6"/>
+                  <circle class="fan" cx="400" cy="535" r="33" fill="url(#fanCore)" stroke="#d8fbff" stroke-width="4"/>
+                  <path class="fan-blades" d="M400 507 C415 509 424 522 416 532 C406 540 400 528 400 507 M428 540 C425 555 411 563 401 554 C393 544 406 538 428 540 M392 562 C377 559 369 545 378 536 C389 529 394 541 392 562 M372 530 C376 515 390 508 399 517 C407 527 394 532 372 530" fill="#fff"/>
+                </g>
+
+                <!-- Vidrio exterior limpio -->
+                <ellipse class="glass-body" cx="400" cy="340" rx="270" ry="240" fill="none" stroke="#83eaff" stroke-width="8"/>
+                <ellipse cx="400" cy="340" rx="258" ry="228" fill="none" stroke="#ffffff" stroke-opacity=".16" stroke-width="3"/>
+                <path class="glass-highlight" d="M238 208 C178 279 179 395 229 472" fill="none" stroke="#fff" stroke-width="16" stroke-linecap="round" opacity=".18"/>
+                <path d="M549 197 C611 261 626 377 584 457" fill="none" stroke="#5ee8ff" stroke-width="7" stroke-linecap="round" opacity=".13"/>
+
+                <!-- Entrada superior y conducto de selección -->
+                <g class="mouth">
+                  <path d="M344 67 H456 L474 110 Q400 130 326 110 Z" fill="url(#metal)" stroke="#fff07d" stroke-width="5"/>
+                  <ellipse cx="400" cy="68" rx="59" ry="17" fill="#220d40" stroke="#ffe986" stroke-width="7"/>
+                  <ellipse cx="400" cy="68" rx="43" ry="8" fill="#05072b"/>
+                  <path d="M459 77 C522 69 557 85 563 127" fill="none" stroke="url(#metal)" stroke-width="24" stroke-linecap="round"/>
+                  <path d="M459 77 C522 69 557 85 563 127" fill="none" stroke="#fff0a1" stroke-opacity=".45" stroke-width="5" stroke-linecap="round"/>
+                </g>
+
+                <!-- Base profesional con rejilla de aire -->
+                <g class="machine-base">
+                  <path d="M258 580 H542 L599 643 Q400 676 201 643 Z" fill="url(#metal)" stroke="#ffe978" stroke-width="6"/>
+                  <rect x="294" y="599" width="212" height="31" rx="15" fill="#07113c" stroke="#54e7ff" stroke-width="4"/>
+                  <path d="M321 615 H479" stroke="#35ddff" stroke-width="7" stroke-linecap="round" stroke-dasharray="4 15"/>
+                  <circle cx="545" cy="616" r="10" fill="#43e99b" filter="url(#glow)"/>
+                </g>
+              </svg>
+
+              <span class="mouth-target" id="mouth-target" aria-hidden="true"></span>
+              <div class="ticket-layer" id="ticket-layer" aria-hidden="true"></div>
+            </div>
+
+          </div>
+
+          <aside class="control-panel">
+            <span class="panel-kicker">Panel de control</span>
+            <h3>Introduce un ticket</h3>
+            <p>Escribe un número o usa el siguiente disponible. Verás cómo entra y se une a la mezcla.</p>
+
+            <form id="ticket-form" class="ticket-form">
+              <label for="ticket-number">Número de ticket</label>
+              <div class="input-row">
+                <span>#</span>
+                <input id="ticket-number" name="ticket" type="number" min="1" max="9999" inputmode="numeric" placeholder="001" aria-describedby="ticket-help">
+              </div>
+              <small id="ticket-help">Máximo 80 bolitas en esta demostración.</small>
+              <button class="add-button" id="add-ticket" type="submit">
+                <span>Agregar ticket</span>
+                <b aria-hidden="true">→</b>
+              </button>
+            </form>
+
+            <div class="speed-control">
+              <div class="speed-copy">
+                <label for="air-intensity">Intensidad del aire</label>
+                <output id="rotation-output">Nivel 6</output>
+              </div>
+              <input id="air-intensity" type="range" min="1" max="10" value="6" step="1">
+              <div class="range-labels"><span>Suave</span><span>Potente</span></div>
+            </div>
+
+            <button class="mix-button" id="mix-balls" type="button">Impulsar la mezcla</button>
+
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing closing-arcade" id="cierre-tombola" aria-labelledby="closing-title">
+      <div class="closing-grid closing-grid-top" aria-hidden="true"></div>
+      <div class="closing-grid closing-grid-floor" aria-hidden="true"></div>
+      <div class="closing-particles" aria-hidden="true"></div>
+
+      <div class="closing-bubble bubble-a" aria-hidden="true"></div>
+      <div class="closing-bubble bubble-b" aria-hidden="true"></div>
+      <div class="closing-bubble bubble-c" aria-hidden="true"></div>
+      <div class="closing-bubble bubble-d" aria-hidden="true"></div>
+
+      <div class="closing-frame">
+        <div class="closing-frame-line line-one"></div>
+        <div class="closing-frame-line line-two"></div>
+        <div class="closing-glass">
+          <div class="closing-orb" aria-hidden="true">
+            <span class="orb-ticket ticket-one">24</span>
+            <span class="orb-ticket ticket-two">51</span>
+            <span class="orb-ticket ticket-three">67</span>
+          </div>
+
+          <div class="closing-copy">
+            <span class="closing-eyebrow"><i></i> Gran Tómbola GANO+1</span>
+            <h2 id="closing-title">
+              Transparencia que puedes ver.
+              <strong>Emoción que puedes sentir.</strong>
+            </h2>
+            <p>Solicita información sobre la próxima actividad y conoce cómo participar.</p>
+            <a class="closing-action" href="https://wa.me/?text=Hola%20GANO%2B1%2C%20quiero%20informaci%C3%B3n%20sobre%20la%20Gran%20T%C3%B3mbola." target="_blank" rel="noopener">
+              <span>Recibir información</span><b aria-hidden="true">→</b>
+            </a>
+            <small>Participa de forma responsable · Solo para mayores de edad</small>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© 2026 GANO+1 · Simulación demostrativa de la Gran Tómbola.</span>
+    <small>Privacidad por defecto: sin cookies de seguimiento ni rastreadores.</small>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="./physics.js" defer></script>
+  <script src="./render.js" defer></script>
+  <script src="./main.js" defer></script>
+</body>
+</html>

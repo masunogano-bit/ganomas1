@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Panel privado para administrar los próximos eventos de GANO+1.">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#f6f3ec">
+  <title>Administración de eventos | GANO+1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./admin.css?v=1">
+</head>
+<body>
+  <main class="admin-shell">
+    <section class="login-view" id="login-view" aria-labelledby="login-title">
+      <div class="login-brand" aria-hidden="true">GANO<span>+1</span></div>
+      <form class="login-card" id="login-form">
+        <p class="overline">Acceso privado</p>
+        <h1 id="login-title">Administración de eventos</h1>
+        <p class="intro">Ingresa tus credenciales para programar el próximo juego.</p>
+        <label>Usuario<input id="username" name="username" autocomplete="username" required></label>
+        <label>Contraseña<input id="password" name="password" type="password" autocomplete="current-password" required></label>
+        <button class="gold-button" type="submit"><span>Entrar al panel</span><b aria-hidden="true">→</b></button>
+        <p class="form-message" id="login-message" role="alert"></p>
+      </form>
+    </section>
+
+    <section class="dashboard-view" id="dashboard-view" aria-labelledby="dashboard-title" hidden>
+      <header class="admin-header">
+        <a class="admin-brand" href="./gano-plus-landing.html" aria-label="Volver a GANO+1">GANO<span>+1</span></a>
+        <div><span class="secure-dot"></span> Sesión protegida</div>
+        <button class="logout-button" id="logout-button" type="button">Cerrar sesión</button>
+      </header>
+
+      <div class="dashboard-content">
+        <div class="title-block">
+          <p class="overline">Control de transmisión</p>
+          <h1 id="dashboard-title">Gestión de Eventos Gano+1</h1>
+          <p>Programa la fecha pública en horario de Ecuador. El contador se actualizará automáticamente.</p>
+        </div>
+
+        <div class="event-layout">
+          <form class="event-form" id="event-form">
+            <div class="form-heading">
+              <span class="step-number">01</span>
+              <div><h2>Próximo juego en vivo</h2><p>Selecciona la fecha y la hora que verá el público.</p></div>
+            </div>
+            <label class="date-control" for="event-datetime">
+              <span>Fecha y hora <b>ECT · Ecuador</b></span>
+              <input id="event-datetime" name="localDateTime" type="datetime-local" required>
+            </label>
+            <button class="gold-button" id="update-button" type="submit"><span>Actualizar Contador</span><b aria-hidden="true">→</b></button>
+            <p class="form-message" id="event-message" role="status"></p>
+          </form>
+
+          <aside class="event-preview" aria-label="Resumen del evento programado">
+            <p class="overline">Vista de publicación</p>
+            <div class="timeline-signature" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="preview-status">Próximo evento</span>
+            <strong id="preview-date">Cargando fecha…</strong>
+            <p id="preview-relative">Consultando el contador público</p>
+            <a href="./gano-plus-landing.html#proximo-juego" target="_blank" rel="noopener">Ver página pública <span>↗</span></a>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+  <div class="admin-toast" id="admin-toast" role="status" aria-live="polite"></div>
+  <script type="module" src="./admin.js?v=1"></script>
+</body>
+</html>

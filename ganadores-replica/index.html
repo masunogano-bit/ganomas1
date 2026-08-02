@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#061341">
+  <meta name="description" content="Sección interactiva de celebración y ganadores GANO+1.">
+  <title>La celebración comienza | GANO+1</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="winner-scene" id="winnerScene">
+    <div class="grid-horizon" aria-hidden="true"></div>
+    <div class="grid-floor" aria-hidden="true"></div>
+    <div class="center-beam" aria-hidden="true"></div>
+
+    <div class="corner-rings corner-rings-left" aria-hidden="true">
+      <i></i><i></i><i></i>
+    </div>
+    <div class="corner-rings corner-rings-right" aria-hidden="true">
+      <i></i><i></i><i></i>
+    </div>
+
+    <span class="number-orb orb-12-left" aria-hidden="true">12</span>
+    <span class="number-orb orb-1" aria-hidden="true">1</span>
+    <span class="number-orb orb-38" aria-hidden="true">38</span>
+    <span class="number-orb orb-51" aria-hidden="true">51</span>
+    <span class="number-orb orb-12-bottom" aria-hidden="true">12</span>
+    <span class="number-orb orb-74" aria-hidden="true">74</span>
+    <span class="number-orb orb-6" aria-hidden="true">6</span>
+
+    <section class="story-panel" aria-labelledby="celebrationTitle">
+      <p class="kicker">EL MOMENTO QUE TODOS ESPERAN</p>
+      <h1 id="celebrationTitle">La jugada<br>termina. La<br>celebración<br>comienza.</h1>
+      <p class="intro">
+        El área ganadora transforma el resultado en el pico emocional
+        de la experiencia: luz, reconocimiento y transparencia en un
+        solo momento.
+      </p>
+
+      <ol class="journey" aria-label="Pasos para participar">
+        <li>
+          <button class="journey-step step-green" type="button" data-step="1" aria-pressed="false">
+            <span class="step-number">1</span>
+            <span>Haz clic en Empezar a Jugar</span>
+          </button>
+        </li>
+        <li>
+          <button class="journey-step step-cyan" type="button" data-step="2" aria-pressed="false">
+            <span class="step-number">2</span>
+            <span>Deja tus datos y el número de tablas que deseas adquirir</span>
+          </button>
+        </li>
+        <li>
+          <button class="journey-step step-pink" type="button" data-step="3" aria-pressed="false">
+            <span class="step-number">3</span>
+            <span>Escanea el código QR para que descubras tus tablas</span>
+          </button>
+        </li>
+        <li>
+          <button class="journey-step step-fuchsia" type="button" data-step="4" aria-pressed="false">
+            <span class="step-number">4</span>
+            <span>Sigue el live de Facebook para que no te pierdas el juego</span>
+          </button>
+        </li>
+        <li class="journey-wide">
+          <button class="journey-step step-orange" type="button" data-step="5" aria-pressed="false">
+            <span class="step-number">5</span>
+            <span>Comparte el live y participa por un premio al final del juego</span>
+          </button>
+        </li>
+      </ol>
+
+      <button class="start-button" id="startButton" type="button">
+        <span>Empezar a Jugar</span>
+        <span aria-hidden="true">→</span>
+      </button>
+      <p class="status-message" id="statusMessage" role="status" aria-live="polite"></p>
+    </section>
+
+    <section class="machine-zone" aria-label="Muro oficial de celebración">
+      <div class="decor-card decor-card-left" aria-hidden="true">
+        <div class="decor-title">B I N G O</div>
+        <div class="decor-grid">
+          <span>1</span><span>25</span><span>38</span><span>57</span><span>72</span>
+          <span>10</span><span>39</span><span>48</span><span>62</span><span>73</span>
+          <span>8</span><span>20</span><span>★</span><span>59</span><span>75</span>
+          <span>7</span><span>24</span><span>41</span><span>55</span><span>68</span>
+        </div>
+      </div>
+
+      <div class="decor-card decor-card-right" aria-hidden="true">
+        <div class="decor-title">B I N G O</div>
+        <div class="decor-grid">
+          <span>5</span><span>22</span><span>38</span><span>57</span><span>77</span>
+          <span>9</span><span>29</span><span>45</span><span>62</span><span>71</span>
+          <span>3</span><span>18</span><span>★</span><span>69</span><span>74</span>
+          <span>12</span><span>27</span><span>44</span><span>59</span><span>73</span>
+        </div>
+      </div>
+
+      <article class="winner-machine">
+        <div class="machine-cap cap-left" aria-hidden="true"></div>
+        <div class="machine-cap cap-right" aria-hidden="true"></div>
+        <div class="machine-inner">
+          <section class="winner-identity">
+            <div class="trophy-wrap" aria-hidden="true">
+              <span class="trophy-halo"></span>
+              <svg class="trophy" viewBox="0 0 220 210" role="img" aria-label="Trofeo dorado">
+                <defs>
+                  <linearGradient id="cupGold" x1="0" x2="1">
+                    <stop offset="0" stop-color="#7c6400"/>
+                    <stop offset=".22" stop-color="#fff46d"/>
+                    <stop offset=".48" stop-color="#ffb400"/>
+                    <stop offset=".72" stop-color="#34f15d"/>
+                    <stop offset="1" stop-color="#7c4a00"/>
+                  </linearGradient>
+                  <linearGradient id="stemGold" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#ffffa5"/>
+                    <stop offset=".5" stop-color="#d79800"/>
+                    <stop offset="1" stop-color="#54e94d"/>
+                  </linearGradient>
+                  <radialGradient id="baseGold">
+                    <stop offset="0" stop-color="#ffe757"/>
+                    <stop offset=".72" stop-color="#a65f00"/>
+                    <stop offset="1" stop-color="#382500"/>
+                  </radialGradient>
+                </defs>
+                <path d="M48 38h124c-2 63-19 92-47 103H95C67 130 50 101 48 38Z" fill="url(#cupGold)" stroke="#fff06a" stroke-width="4"/>
+                <path d="M48 50H29c-18 0-18 45 3 61 10 8 25 10 39 2" fill="none" stroke="url(#cupGold)" stroke-width="8"/>
+                <path d="M172 50h19c18 0 18 45-3 61-10 8-25 10-39 2" fill="none" stroke="url(#cupGold)" stroke-width="8"/>
+                <path d="M95 140h30v27H95Z" fill="url(#stemGold)"/>
+                <path d="M79 165h62l13 19H66Z" fill="url(#baseGold)" stroke="#ffd700" stroke-width="3"/>
+                <ellipse cx="110" cy="38" rx="62" ry="12" fill="#f8d437" stroke="#fff070" stroke-width="4"/>
+                <ellipse cx="110" cy="40" rx="52" ry="7" fill="#3e3100"/>
+                <path d="M68 48c8 43 18 66 37 82" fill="none" stroke="rgba(247,251,255,.55)" stroke-width="7" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <p class="wall-label">MURO OFICIAL DE<br>CELEBRACIÓN</p>
+            <h2>Ganador/a<br>GANO+1</h2>
+            <strong>Aquí brillan los<br>resultados reales</strong>
+            <p class="winner-note">Este espacio mostrará nombre, premio y fecha únicamente cuando el resultado haya sido verificado.</p>
+            <span class="verified"><i></i> Publicación con resultado verificado</span>
+          </section>
+
+          <section class="leaderboard" aria-labelledby="leaderboardTitle">
+            <header>
+              <h3 id="leaderboardTitle">Últimos ganadores <span>GANO+1</span></h3>
+              <i aria-hidden="true"></i>
+            </header>
+            <ol>
+              <li>
+                <span class="rank crown gold" aria-label="Primer lugar">♛</span>
+                <span class="avatar avatar-blue" aria-hidden="true">JP</span>
+                <strong>Juan P.</strong>
+                <b>$500</b>
+              </li>
+              <li>
+                <span class="rank crown silver" aria-label="Segundo lugar">♛</span>
+                <span class="avatar avatar-red" aria-hidden="true">ER</span>
+                <strong>Elena R.</strong>
+                <b>$250</b>
+              </li>
+              <li>
+                <span class="rank crown bronze" aria-label="Tercer lugar">♛</span>
+                <span class="avatar avatar-purple" aria-hidden="true">IB</span>
+                <strong>Iasia B.</strong>
+                <b>$200</b>
+              </li>
+              <li>
+                <span class="rank">4</span>
+                <span class="avatar avatar-green" aria-hidden="true">JP</span>
+                <strong>Juan P.</strong>
+                <b>$100</b>
+              </li>
+              <li>
+                <span class="rank">5</span>
+                <span class="avatar avatar-orange" aria-hidden="true">EA</span>
+                <strong>Elena A.</strong>
+                <b>$150</b>
+              </li>
+            </ol>
+            <p>Publicar y actualizar únicamente con resultados verificados por la organización.</p>
+          </section>
+        </div>
+      </article>
+
+      <div class="reward-icons" aria-hidden="true">
+        <span>☆</span><span>♬</span><span>⚄</span><span>☆</span>
+      </div>
+      <p class="win-marquee" aria-label="Hoy vas a ganar">¡HOY VAS A GANAR!</p>
+    </section>
+
+    <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
