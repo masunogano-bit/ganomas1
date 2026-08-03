@@ -6,4 +6,8 @@ dist-matter-test/
 .env.local
 .vercel/
 *.log
+Ganomas1Fronted/
 
+
+.vercel
+.env*
