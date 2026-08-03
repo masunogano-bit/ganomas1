@@ -1,6 +1,7 @@
 node_modules
 dist
 dist-matter-test
+Ganomas1Fronted
 .env
 .env.local
 *.log
