@@ -116,6 +116,19 @@
   text-shadow: 0 0 12px rgba(255,65,205,.58);
 }
 
+.countdown-follow {
+  margin: 7px 0 0;
+  color: #bceeff;
+  font-size: clamp(.74rem, 1.45vw, .92rem);
+  font-weight: 650;
+  letter-spacing: .01em;
+}
+
+.countdown-follow strong {
+  color: #ffe20d;
+  text-transform: uppercase;
+}
+
 .countdown-console[data-state="loading"] .countdown-value { opacity: .62; }
 .countdown-console[data-state="live"] { animation: countdown-live 1.15s ease-in-out infinite alternate; }
 .countdown-console[data-state="error"] .countdown-date { color: #ffd76a; }
